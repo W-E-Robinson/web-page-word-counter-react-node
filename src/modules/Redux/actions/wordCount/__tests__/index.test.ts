@@ -6,7 +6,7 @@ import {
 
 describe("Actions - GET /dishes", () => {
     test("fetchWordCountRequest", () => {
-        expect(fetchWordCountRequest({ url: "mock url" }).type).toBe("FETCH_WORD_COUNT_REQUEST");
+        expect(fetchWordCountRequest({ webPageUrl: "mock url" }).type).toBe("FETCH_WORD_COUNT_REQUEST");
     });
     test("fetchWordCountFailure", () => {
         expect(fetchWordCountFailure({ error: "mock error" }).type).toBe("FETCH_WORD_COUNT_FAILURE");
