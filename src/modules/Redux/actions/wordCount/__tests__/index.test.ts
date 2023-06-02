@@ -4,7 +4,7 @@ import {
     fetchWordCountSuccess,
 } from "../actions";
 
-describe("Actions - GET /dishes", () => {
+describe("Actions - GET /wordCount", () => {
     test("fetchWordCountRequest", () => {
         expect(fetchWordCountRequest({ webPageUrl: "mock url" }).type).toBe("FETCH_WORD_COUNT_REQUEST");
     });
