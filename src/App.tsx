@@ -1,5 +1,6 @@
 import React from "react";
 
+import { Alert } from "./atoms/Alert";
 import { Form } from "./molecules/Form";
 
 const mockFormFields = [
@@ -9,6 +10,10 @@ const mockFormFields = [
 
 export const App = () => {
     return (
+    <>
         <Form fields={mockFormFields} />
+        <Alert id="id" severity="success" onClose={() => console.info("onClose")} message="message" />
+        <Alert id="id" severity="error" onClose={() => console.info("onClose")} message="message" />
+    </>
     );
 };
