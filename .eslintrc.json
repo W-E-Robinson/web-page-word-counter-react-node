@@ -68,6 +68,7 @@
         "react-hooks/exhaustive-deps": 0,
         "space-infix-ops": 0,
         "quotes": [2, "double"],
-        "dot-notation": 0
+        "dot-notation": 0,
+        "prefer-destructuring": 0
     }
 }
