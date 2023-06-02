@@ -6,6 +6,8 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
+import { Table } from "../../molecules/Table";
+
 import { AccordionProps } from "./types";
 
 export const Accordion = ({
@@ -22,7 +24,9 @@ export const Accordion = ({
                         >
                             <Typography>Word Count: {data.totalWordCount} - {data.webPageUrl}</Typography>
                         </AccordionSummary>
-                        <AccordionDetails></AccordionDetails>
+                        <AccordionDetails>
+                            <Table headers={["Word", "Count"]} rows={data.destructuredWordCount} />
+                        </AccordionDetails>
                     </MUIAccordion>
                 );
             })}
