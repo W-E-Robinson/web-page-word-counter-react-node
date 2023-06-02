@@ -44,7 +44,7 @@ describe("wordCountReducer testing", () => {
 
         expect(updatedState.pending).toBe(false);
         expect(updatedState.error).toBe(null);
-        expect(updatedState.wordCountsInfo).toEqual(mockAction.payload.webPageInfo);
+        expect(updatedState.wordCountsInfo).toEqual([mockAction.payload.webPageInfo]);
     });
 
     test("FETCH_WORD_COUNT_FAILURE", () => {
