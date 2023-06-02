@@ -12,7 +12,7 @@ describe("Accordion testing", () => {
             totalWordCount: 1000,
             destructuredWordCount: [
                 { word: "the", count: 110 },
-                { word: "hello", count: 3 },
+                { word: "hello", count: 44 },
             ],
         },
         {
@@ -46,9 +46,9 @@ describe("Accordion testing", () => {
         const firstAccordion = getByText("Word Count: 1000, Url: mock url 1");
         userEvent.click(firstAccordion);
 
-        expect(findByText("the")).toBeInTheDocument();
-        expect(findByText("hello")).toBeInTheDocument();
-        expect(findByText(110)).toBeInTheDocument();
-        expect(findByText(3)).toBeInTheDocument();
+        expect(await findByText("the")).toBeInTheDocument();
+        expect(await findByText("hello")).toBeInTheDocument();
+        expect(await findByText(110)).toBeInTheDocument();
+        expect(await findByText(44)).toBeInTheDocument();
     });
 });
