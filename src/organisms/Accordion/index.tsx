@@ -25,6 +25,7 @@ export const Accordion = ({
                             <Typography>Word Count: {data.totalWordCount} - {data.webPageUrl}</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
+                            {/* @ts-ignore */}
                             <Table headers={["Word", "Count"]} rows={data.destructuredWordCount} />
                         </AccordionDetails>
                     </MUIAccordion>
