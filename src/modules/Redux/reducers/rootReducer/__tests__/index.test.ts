@@ -9,7 +9,7 @@ describe("rootReducer testing", () => {
         expect(store.getState().wordCounts).toEqual({
             pending: false,
             error: undefined,
-            webCountsInfo: [],
+            wordCountsInfo: [],
         });
     });
 });
