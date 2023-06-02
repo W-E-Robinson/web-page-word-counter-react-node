@@ -4,6 +4,8 @@ import { Button as MUIButton } from "@mui/material";
 
 import { ButtonProps } from "./types";
 
+import "./styles.sass";
+
 export const Button = memo(({
     id,
     label,
@@ -13,11 +15,11 @@ export const Button = memo(({
 }: ButtonProps) => {
     return (
         <MUIButton
+            className="button"
             id={id}
             disabled={disabled}
             onClick={onClick}
             variant={variant}
-            className="button"
         >
             {label}
         </MUIButton>

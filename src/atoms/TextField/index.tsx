@@ -4,6 +4,8 @@ import { TextField as MUITextField } from "@mui/material";
 
 import { TextFieldProps } from "./types";
 
+import "./styles.sass";
+
 export const TextField = memo(({
     id,
     value,

@@ -1,24 +1,16 @@
 import React from "react";
-import logo from "./logo.svg";
+
+import { Form } from "./molecules/Form";
+
 import "./App.css";
 
+const mockFormFields = [
+    { component: "TEXT_FIELD" as const, id: "mockId", value: "text field", label: "label", onChange: () => console.info("text field") },
+    { component: "BUTTON" as const, id: "mockId", label: "label", variant: "contained" as const, disabled: false, onClick: () => console.info("text field") },
+];
+
 export const App = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Form fields={mockFormFields} />
+    );
 };
