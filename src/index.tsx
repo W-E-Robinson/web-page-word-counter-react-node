@@ -7,7 +7,7 @@ import { App } from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { configureStore } from "./modules/Redux/store";
 
-import "./index.css";
+import "./index.sass";
 
 const store = configureStore();
 
