@@ -6,37 +6,26 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-export const Accordion = () => {
+import { AccordionProps } from "./types";
+
+export const Accordion = ({
+    accordionData,
+}: AccordionProps) => {
     return (
         <>
-            <MUIAccordion>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    id="panel1a-header"
-                >
-                    <Typography>Accordion 1</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <Typography>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                        malesuada lacus ex, sit amet blandit leo lobortis eget.
-                    </Typography>
-                </AccordionDetails>
-            </MUIAccordion>
-            <MUIAccordion>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    id="panel2a-header"
-                >
-                    <Typography>Accordion 2</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <Typography>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                        malesuada lacus ex, sit amet blandit leo lobortis eget.
-                    </Typography>
-                </AccordionDetails>
-            </MUIAccordion>
+            {accordionData.map((data) => {
+                return (
+                    <MUIAccordion>
+                        <AccordionSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            id={data.webPageUrl}
+                        >
+                            <Typography>Word Count: {data.totalWordCount} - {data.webPageUrl}</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails></AccordionDetails>
+                    </MUIAccordion>
+                );
+            })}
         </>
     );
 };
