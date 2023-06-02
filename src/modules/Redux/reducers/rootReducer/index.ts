@@ -1,5 +1,9 @@
 import { combineReducers } from "redux";
 
-export const rootReducer = combineReducers({});
+import { wordCountReducer } from "../wordCountReducer/index";
+
+export const rootReducer = combineReducers({
+    wordCounts: wordCountReducer,
+});
 
 export type AppState = ReturnType<typeof rootReducer>;
