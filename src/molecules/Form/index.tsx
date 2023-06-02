@@ -11,10 +11,11 @@ export const Form = ({
 }: FormProps) => {
     return (
         <div className={styles["container"]}>
-            {fields.map((field) => {
+            {fields.map((field, index) => {
+                console.info(index);
                 if (field.component === "TEXT_FIELD") {
                     return (
-                        <div key={field.id}>
+                        <div key={field.id} className={styles[`${index ? "field" : ""}`]}>
                             <TextField
                                 id={field.id}
                                 value={field.value}
@@ -27,7 +28,7 @@ export const Form = ({
                     );
                 } else if (field.component === "BUTTON") {
                     return (
-                        <div key={field.id}>
+                        <div key={field.id} className={styles[`${index ? "field" : ""}`]}>
                             <Button
                                 id={field.id}
                                 label={field.label}
