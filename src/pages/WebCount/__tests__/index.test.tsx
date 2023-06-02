@@ -7,7 +7,7 @@ import { WordCount } from "../index";
 describe("WordCount Page testing", () => {
     test("Header rendering", () => {
         render(
-            <WordCount />
+            <WordCount />,
         );
 
         expect(screen.getByText("Web Page Word Counter")).toBeInTheDocument();
