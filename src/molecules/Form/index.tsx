@@ -12,7 +12,6 @@ export const Form = ({
     return (
         <div className={styles["container"]}>
             {fields.map((field, index) => {
-                console.info(index);
                 if (field.component === "TEXT_FIELD") {
                     return (
                         <div key={field.id} className={styles[`${index ? "field" : ""}`]}>

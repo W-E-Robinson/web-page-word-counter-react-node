@@ -22,7 +22,7 @@ export const Accordion = ({
                             expandIcon={<ExpandMoreIcon />}
                             id={data.webPageUrl}
                         >
-                            <Typography>Word Count: {data.totalWordCount} - {data.webPageUrl}</Typography>
+                            <Typography>Word Count: {data.totalWordCount}, Url: {data.webPageUrl}</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
                             {/* @ts-ignore */}
