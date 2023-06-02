@@ -17,7 +17,6 @@ export const Button = memo(({
             disabled={disabled}
             onClick={onClick}
             variant={variant}
-            className="button"
         >
             {label}
         </MUIButton>

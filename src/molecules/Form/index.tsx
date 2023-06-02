@@ -4,11 +4,13 @@ import { Button } from "../../atoms/Button/index";
 import { TextField } from "../../atoms/TextField/index";
 import { FormProps } from "./types";
 
+import styles from "./styles.module.sass";
+
 export const Form = ({
     fields,
 }: FormProps) => {
     return (
-        <>
+        <div className={styles["container"]}>
             {fields.map((field) => {
                 if (field.component === "TEXT_FIELD") {
                     return (
@@ -37,6 +39,6 @@ export const Form = ({
                     );
                 }
             })}
-        </>
+        </div>
     );
 };

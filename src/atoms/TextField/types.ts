@@ -7,4 +7,5 @@ export interface TextFieldProps {
     onChange: (event: ChangeEvent) => void;
     error?: boolean;
     helperText?: string | null;
+    width?: number;
 }
