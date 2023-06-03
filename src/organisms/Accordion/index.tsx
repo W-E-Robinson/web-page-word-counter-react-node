@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import { Accordion as MUIAccordion } from "@mui/material";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -10,7 +10,7 @@ import { Table } from "../../molecules/Table";
 
 import { AccordionProps } from "./types";
 
-export const Accordion = ({
+export const Accordion = memo(({
     accordionData,
 }: AccordionProps) => {
     return (
@@ -33,4 +33,4 @@ export const Accordion = ({
             })}
         </>
     );
-};
+});

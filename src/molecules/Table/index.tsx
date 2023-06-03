@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import { Table as MUITable } from "@mui/material";
 import TableBody from "@mui/material/TableBody";
@@ -10,7 +10,7 @@ import Paper from "@mui/material/Paper";
 
 import { TableProps } from "./types";
 
-export const Table = ({
+export const Table = memo(({
     headers,
     rows,
 }: TableProps) => {
@@ -36,4 +36,4 @@ export const Table = ({
             </MUITable>
         </TableContainer>
     );
-};
+});
