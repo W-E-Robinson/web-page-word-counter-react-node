@@ -2,6 +2,7 @@ import {
     FETCH_WORD_COUNT_REQUEST,
     FETCH_WORD_COUNT_SUCCESS,
     FETCH_WORD_COUNT_FAILURE,
+    SET_WORD_COUNT_PROPERTY,
 } from "../../actions/wordCount/actionTypes";
 import {
     WordCountActions,
@@ -34,6 +35,14 @@ export const wordCountReducer = (state = initialState, action: WordCountActions)
                 pending: false,
                 error: action.payload.error,
             };
+        case SET_WORD_COUNT_PROPERTY: {
+            const key = Object.keys(action.payload)[0];
+            const value = Object.values(action.payload)[0];
+            return {
+                ...state,
+                [`${key}`]: value,
+            };
+        }
         default:
             return {
                 ...state,
