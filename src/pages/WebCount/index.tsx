@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useMemo } from "react";
+import React, { Suspense, useState, useMemo, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -7,14 +7,21 @@ import { Form } from "../../molecules/Form";
 import { formMapping } from "./functions";
 import { Header } from "./components/Header";
 
+const Alert = React.lazy(() => import("../../atoms/Alert").then(module => ({ default: module.Alert })));
 const Accordion = React.lazy(() => import("../../organisms/Accordion").then(module => ({ default: module.Accordion })));
 
 export const WordCount = () => {
     const reduxDispatch = useDispatch();
+
+    const [url, setUrl] = useState("");
+    const [showAlert, setShowAlert] = useState(false);
+
     const { pending, error, wordCountsInfo } = useSelector((state: AppState) => state.wordCounts);
     console.info(pending, error, wordCountsInfo);
 
-    const [url, setUrl] = useState("");
+    useEffect(() => {
+        if (error === null || typeof error === "string") { setShowAlert(true); }
+    }, [error]);
 
     const formFields = useMemo(() => formMapping(url, setUrl, reduxDispatch), [url]);
 
@@ -22,6 +29,15 @@ export const WordCount = () => {
         <>
             <Header />
             <Form fields={formFields} />
+            {showAlert &&
+                <Suspense fallback={<></>}>
+                    <Alert
+                        id="alert"
+                        severity={error === null ? "success" : "error"}
+                        message={error === null ? "Request Successful!" : error as string}
+                        onClose={() => setShowAlert(false)}
+                    />
+                </Suspense>}
             {wordCountsInfo.length > 0 &&
                 <Suspense fallback={<></>}>
                     <Accordion accordionData={wordCountsInfo} />
