@@ -6,6 +6,7 @@ export const getWordCount = async (
     webPageUrl: string,
 ) => {
     const url = `${WORD_COUNT_URL}?webPageUrl=${webPageUrl}`;
+    console.info(url);
 
     try {
         const response = await axios.get(url);
