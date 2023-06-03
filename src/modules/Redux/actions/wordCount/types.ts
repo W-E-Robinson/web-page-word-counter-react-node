@@ -50,7 +50,7 @@ export type FetchWordCountFailure = {
 };
 
 export interface SetWordCountPropertyPayload {
-    [key: string]: null | string | number;
+    [key: string]: null | string | number | undefined;
 }
 
 export type SetWordCountProperty = {
