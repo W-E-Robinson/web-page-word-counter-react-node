@@ -1,15 +1,14 @@
 import { FormMapping } from "../types";
 
 export const formMapping: FormMapping = (url, setUrl) => {
-    console.info(url);
     console.info(setUrl);
     return [
         {
             component: "TEXT_FIELD" as const,
             id: "mock id",
             label: "Enter URL",
-            onChange: () => console.info("text field"),
-            value: "",
+            onChange: (value) => setUrl(value),
+            value: url,
             error: false,
             helperText: null,
         },
@@ -18,15 +17,15 @@ export const formMapping: FormMapping = (url, setUrl) => {
             id: "reset-button",
             label: "Reset",
             variant: "outlined" as const,
-            disabled: false,
-            onClick: () => console.info("reset button"),
+            disabled: !url.length,
+            onClick: () => setUrl(""),
         },
         {
             component: "BUTTON" as const,
             id: "count-button",
             label: "Count",
             variant: "contained" as const,
-            disabled: false,
+            disabled: !url.length,
             onClick: () => console.info("count button"),
         },
     ];

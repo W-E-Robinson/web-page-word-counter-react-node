@@ -20,7 +20,7 @@ export const WordCount = () => {
         <>
             <Header />
             <Form fields={formFields} />
-            {wordCountsInfo.length &&
+            {wordCountsInfo.length > 0 &&
                 <Suspense fallback={<></>}>
                     <Accordion accordionData={wordCountsInfo} />
                 </Suspense>}
