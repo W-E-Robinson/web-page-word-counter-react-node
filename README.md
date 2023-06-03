@@ -1,6 +1,6 @@
 # web-page-word-counter-frontend
 
-This is a React application that allows the user to input a URL and receive both a count of the words on the page as well as a breakdown of word frequency.
+This is a React application that allows the user to input a web page URL and receive both a count of the words on the page as well as a breakdown of word frequency.
 
 Accompanying backend repo: [web-page-word-counter-backend](https://github.com/W-E-Robinson/web-page-word-counter-backend).
 
