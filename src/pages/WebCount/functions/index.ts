@@ -1,4 +1,8 @@
-export const formMapping = () => {
+import { FormMapping } from "../types";
+
+export const formMapping: FormMapping = (url, setUrl) => {
+    console.info(url);
+    console.info(setUrl);
     return [
         {
             component: "TEXT_FIELD" as const,

@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 
 import { useSelector } from "react-redux";
 
@@ -12,7 +12,9 @@ const Accordion = React.lazy(() => import("../../organisms/Accordion").then(modu
 export const WordCount = () => {
     const { wordCountsInfo } = useSelector((state: AppState) => state.wordCounts);
 
-    const formFields = formMapping();
+    const [url, setUrl] = useState<string>("");
+
+    const formFields = formMapping(url, setUrl);
 
     return (
         <>
