@@ -17,7 +17,7 @@ export const Accordion = ({
         <>
             {accordionData.map((data) => {
                 return (
-                    <MUIAccordion>
+                    <MUIAccordion TransitionProps={{ unmountOnExit: true }}>
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon />}
                             id={data.webPageUrl}
