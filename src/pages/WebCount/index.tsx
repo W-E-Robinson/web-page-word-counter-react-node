@@ -8,6 +8,8 @@ import { formMapping } from "./functions";
 import { Header } from "./components/Header";
 import { setWordCountProperty } from "../../modules/Redux/actions/wordCount/actions";
 
+import styles from "./styles.module.sass";
+
 const Alert = React.lazy(() => import("../../atoms/Alert").then(module => ({ default: module.Alert })));
 const Accordion = React.lazy(() => import("../../organisms/Accordion").then(module => ({ default: module.Accordion })));
 
@@ -26,25 +28,29 @@ export const WordCount = () => {
     const formFields = useMemo(() => formMapping(url, setUrl, reduxDispatch), [url]);
 
     return (
-        <>
+        <div className={styles["container"]}>
             <Header />
             <Form fields={formFields} />
             {showAlert &&
                 <Suspense fallback={<></>}>
-                    <Alert
-                        id="alert"
-                        severity={error === null ? "success" : "error"}
-                        message={error === null ? "Request Successful!" : error as string}
-                        onClose={() => {
-                            setShowAlert(false);
-                            reduxDispatch(setWordCountProperty({ error: undefined }));
-                        }}
-                    />
+                    <div className={styles["alert"]}>
+                        <Alert
+                            id="alert"
+                            severity={error === null ? "success" : "error"}
+                            message={error === null ? "Request Successful!" : error as string}
+                            onClose={() => {
+                                setShowAlert(false);
+                                reduxDispatch(setWordCountProperty({ error: undefined }));
+                            }}
+                        />
+                    </div>
                 </Suspense>}
             {wordCountsInfo.length > 0 &&
                 <Suspense fallback={<></>}>
-                    <Accordion accordionData={wordCountsInfo} />
+                    <div className={styles["accordion"]}>
+                        <Accordion accordionData={wordCountsInfo} />
+                    </div>
                 </Suspense>}
-        </>
+        </div>
     );
 };

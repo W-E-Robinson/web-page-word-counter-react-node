@@ -1,5 +1,13 @@
-.container,
-.header
+.container
   display: flex
   flex-direction: column
   align-items: center
+  
+.header
+  @extend .container
+  margin-top: 10px
+  margin-bottom: 10px
+
+.alert,
+.accordion
+  margin-top: 10px

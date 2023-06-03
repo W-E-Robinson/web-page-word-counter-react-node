@@ -9,6 +9,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Table } from "../../molecules/Table";
 
 import { AccordionProps } from "./types";
+import "./styles.sass";
 
 export const Accordion = memo(({
     accordionData,
@@ -17,7 +18,10 @@ export const Accordion = memo(({
         <>
             {accordionData.map((data) => {
                 return (
-                    <MUIAccordion TransitionProps={{ unmountOnExit: true }}>
+                    <MUIAccordion
+                        className="accordion-organism"
+                        TransitionProps={{ unmountOnExit: true }}
+                    >
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon />}
                             id={data.webPageUrl}
