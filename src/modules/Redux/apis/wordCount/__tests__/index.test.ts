@@ -1,6 +1,5 @@
 import axios from "axios";
 
-import { WORD_COUNT_URL } from "../../../../../constants/endpoints";
 import { getWordCount } from "../index";
 
 jest.mock("axios", () => {
@@ -11,8 +10,8 @@ jest.mock("axios", () => {
 
 describe("api testing", () => {
     test("getWordCount", () => {
-        const mockWebPageUrl = "mock url";
+        const mockWebPageUrl = "mockUrl";
         getWordCount(mockWebPageUrl);
-        expect(axios.get).toHaveBeenCalledWith(`${WORD_COUNT_URL}?webPageUrl=${mockWebPageUrl}`);
+        expect(axios.get).toHaveBeenCalledWith("http://localhost:3000/api/counter/count?webPageUrl=mockUrl");
     });
 });
