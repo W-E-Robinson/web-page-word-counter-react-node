@@ -77,7 +77,7 @@ describe("WordCount Page testing", () => {
                 </Provider>,
             );
 
-            const firstAccordion = getByText("Word Count: 1000, Url: mock url 1");
+            const firstAccordion = getByText("Word Count: 1000, URL: mock url 1");
             userEvent.click(firstAccordion);
 
             expect(await findByText("the")).toBeInTheDocument();
