@@ -43,7 +43,7 @@ describe("Accordion testing", () => {
     test("expandable data rendering", async () => {
         const { getByText, findByText } = render(<Accordion accordionData={mockAccordionData} />);
 
-        const firstAccordion = getByText("Word Count: 1000, Url: mock url 1");
+        const firstAccordion = getByText("Word Count: 1000, URL: mock url 1");
         userEvent.click(firstAccordion);
 
         expect(await findByText("the")).toBeInTheDocument();
