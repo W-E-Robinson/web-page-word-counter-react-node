@@ -19,40 +19,13 @@ export const WordCount = () => {
     const [url, setUrl] = useState("");
     const [showAlert, setShowAlert] = useState(false);
 
-    const { error/*, wordCountsInfo*/ } = useSelector((state: AppState) => state.wordCounts);
+    const { error, wordCountsInfo } = useSelector((state: AppState) => state.wordCounts);
 
     useEffect(() => {
         if (error === null || typeof error === "string") { setShowAlert(true); }
     }, [error]);
 
     const formFields = useMemo(() => formMapping(url, setUrl, reduxDispatch), [url]);
-
-    const wordCountsInfo = [
-        {
-            webPageUrl: "mock url 1",
-            totalWordCount: 1000,
-            destructuredWordCount: [
-                { word: "the", count: 110 },
-                { word: "hello", count: 44 },
-            ],
-        },
-        {
-            webPageUrl: "mock url 2",
-            totalWordCount: 2000,
-            destructuredWordCount: [
-                { word: "a", count: 102 },
-                { word: "tree", count: 3 },
-            ],
-        },
-        {
-            webPageUrl: "mock url 3",
-            totalWordCount: 3000,
-            destructuredWordCount: [
-                { word: "an", count: 101 },
-                { word: "ball", count: 3 },
-            ],
-        },
-    ];
 
     return (
         <div className={styles["container"]}>
