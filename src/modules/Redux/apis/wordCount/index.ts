@@ -1,11 +1,11 @@
 import axios, { AxiosError } from "axios";
 
-import { WORD_COUNT_URL } from "../../../../constants/endpoints/index";
+import { COUNTER_SERVICE } from "../../../../constants/endpoints/index";
 
 export const getWordCount = async (
     webPageUrl: string,
 ) => {
-    const url = `${WORD_COUNT_URL}?webPageUrl=${webPageUrl}`;
+    const url = `${COUNTER_SERVICE}/count?webPageUrl=${webPageUrl}`;
 
     try {
         const response = await axios.get(url);

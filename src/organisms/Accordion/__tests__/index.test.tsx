@@ -36,14 +36,14 @@ describe("Accordion testing", () => {
     test("accordion title information rendering", () => {
         render(<Accordion accordionData={mockAccordionData} />);
 
-        expect(screen.getByText("Word Count: 1000, Url: mock url 1")).toBeInTheDocument();
-        expect(screen.getByText("Word Count: 2000, Url: mock url 2")).toBeInTheDocument();
-        expect(screen.getByText("Word Count: 3000, Url: mock url 3")).toBeInTheDocument();
+        expect(screen.getByText("Word Count: 1000, URL: mock url 1")).toBeInTheDocument();
+        expect(screen.getByText("Word Count: 2000, URL: mock url 2")).toBeInTheDocument();
+        expect(screen.getByText("Word Count: 3000, URL: mock url 3")).toBeInTheDocument();
     });
     test("expandable data rendering", async () => {
         const { getByText, findByText } = render(<Accordion accordionData={mockAccordionData} />);
 
-        const firstAccordion = getByText("Word Count: 1000, Url: mock url 1");
+        const firstAccordion = getByText("Word Count: 1000, URL: mock url 1");
         userEvent.click(firstAccordion);
 
         expect(await findByText("the")).toBeInTheDocument();
