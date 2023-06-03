@@ -2,6 +2,7 @@ import {
     FETCH_WORD_COUNT_REQUEST,
     FETCH_WORD_COUNT_SUCCESS,
     FETCH_WORD_COUNT_FAILURE,
+    SET_WORD_COUNT_PROPERTY,
 } from "./actionTypes";
 
 export interface Word {
@@ -48,7 +49,17 @@ export type FetchWordCountFailure = {
     payload: FetchWordCountFailurePayload;
 };
 
+export interface SetWordCountPropertyPayload {
+    [key: string]: null | string | number | undefined;
+}
+
+export type SetWordCountProperty = {
+    type: typeof SET_WORD_COUNT_PROPERTY;
+    payload: SetWordCountPropertyPayload;
+};
+
 export type WordCountActions =
     | FetchWordCountRequest
     | FetchWordCountSuccess
-    | FetchWordCountFailure;
+    | FetchWordCountFailure
+    | SetWordCountProperty;

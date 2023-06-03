@@ -2,6 +2,7 @@ import {
     fetchWordCountRequest,
     fetchWordCountFailure,
     fetchWordCountSuccess,
+    setWordCountProperty,
 } from "../actions";
 
 describe("Actions - GET /wordCount", () => {
@@ -23,5 +24,8 @@ describe("Actions - GET /wordCount", () => {
                 ],
             },
         }).type).toBe("FETCH_WORD_COUNT_SUCCESS");
+    });
+    test("setWordCountProperty ", () => {
+        expect(setWordCountProperty({ error: null }).type).toBe("SET_WORD_COUNT_PROPERTY");
     });
 });

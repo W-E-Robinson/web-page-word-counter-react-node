@@ -2,8 +2,9 @@ import {
     FETCH_WORD_COUNT_REQUEST,
     FETCH_WORD_COUNT_SUCCESS,
     FETCH_WORD_COUNT_FAILURE,
+    SET_WORD_COUNT_PROPERTY,
 } from "../../../actions/wordCount/actionTypes";
-import { FetchWordCountFailure, FetchWordCountRequest, FetchWordCountSuccess } from "../../../actions/wordCount/types";
+import { FetchWordCountFailure, FetchWordCountRequest, FetchWordCountSuccess, SetWordCountProperty } from "../../../actions/wordCount/types";
 
 import {
     initialState,
@@ -59,5 +60,17 @@ describe("wordCountReducer testing", () => {
         expect(updatedState.pending).toBe(false);
         expect(updatedState.error).toEqual(mockAction.payload.error);
         expect(updatedState.wordCountsInfo).toEqual([]);
+    });
+
+    test("SET_WORD_COUNT_PROPERTY", () => {
+        const mockAction: SetWordCountProperty = {
+            type: SET_WORD_COUNT_PROPERTY,
+            payload: {
+                error: "mock error",
+            },
+        };
+        const updatedState = wordCountReducer(initialState, mockAction);
+
+        expect(updatedState.error).toEqual("mock error");
     });
 });

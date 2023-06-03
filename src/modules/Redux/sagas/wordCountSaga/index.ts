@@ -14,6 +14,9 @@ export function* fetchWordCountSaga(action: FetchWordCountRequest) {
             getWordCount,
             action.payload.webPageUrl,
         );
+
+        if (typeof response === "string") { throw new Error(response); }
+
         yield put(
             fetchWordCountSuccess({
                 webPageInfo: response,
