@@ -54,7 +54,7 @@ describe("WordCount Page testing", () => {
             </Provider>,
         );
 
-        expect(screen.getByLabelText("Enter URL")).toBeInTheDocument();
+        expect(screen.getByLabelText("Paste URL")).toBeInTheDocument();
         expect(screen.getByText("Reset")).toBeInTheDocument();
         expect(screen.getByText("Count")).toBeInTheDocument();
     });

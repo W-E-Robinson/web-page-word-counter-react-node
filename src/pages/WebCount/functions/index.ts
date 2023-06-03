@@ -6,7 +6,7 @@ export const formMapping: FormMapping = (url, setUrl, reduxDispatch) => {
         {
             component: "TEXT_FIELD" as const,
             id: "mock id",
-            label: "Enter URL",
+            label: "Paste URL",
             onChange: (value) => setUrl(value),
             value: url,
             error: false,
