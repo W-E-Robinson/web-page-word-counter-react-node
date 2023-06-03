@@ -8,6 +8,8 @@ import { formMapping } from "./functions";
 import { Header } from "./components/Header";
 import { setWordCountProperty } from "../../modules/Redux/actions/wordCount/actions";
 
+import styles from "./styles.module.sass";
+
 const Alert = React.lazy(() => import("../../atoms/Alert").then(module => ({ default: module.Alert })));
 const Accordion = React.lazy(() => import("../../organisms/Accordion").then(module => ({ default: module.Accordion })));
 
@@ -17,7 +19,7 @@ export const WordCount = () => {
     const [url, setUrl] = useState("");
     const [showAlert, setShowAlert] = useState(false);
 
-    const { error, wordCountsInfo } = useSelector((state: AppState) => state.wordCounts);
+    const { error/*, wordCountsInfo*/ } = useSelector((state: AppState) => state.wordCounts);
 
     useEffect(() => {
         if (error === null || typeof error === "string") { setShowAlert(true); }
@@ -25,26 +27,57 @@ export const WordCount = () => {
 
     const formFields = useMemo(() => formMapping(url, setUrl, reduxDispatch), [url]);
 
+    const wordCountsInfo = [
+        {
+            webPageUrl: "mock url 1",
+            totalWordCount: 1000,
+            destructuredWordCount: [
+                { word: "the", count: 110 },
+                { word: "hello", count: 44 },
+            ],
+        },
+        {
+            webPageUrl: "mock url 2",
+            totalWordCount: 2000,
+            destructuredWordCount: [
+                { word: "a", count: 102 },
+                { word: "tree", count: 3 },
+            ],
+        },
+        {
+            webPageUrl: "mock url 3",
+            totalWordCount: 3000,
+            destructuredWordCount: [
+                { word: "an", count: 101 },
+                { word: "ball", count: 3 },
+            ],
+        },
+    ];
+
     return (
-        <>
+        <div className={styles["container"]}>
             <Header />
             <Form fields={formFields} />
             {showAlert &&
                 <Suspense fallback={<></>}>
-                    <Alert
-                        id="alert"
-                        severity={error === null ? "success" : "error"}
-                        message={error === null ? "Request Successful!" : error as string}
-                        onClose={() => {
-                            setShowAlert(false);
-                            reduxDispatch(setWordCountProperty({ error: undefined }));
-                        }}
-                    />
+                    <div className={styles["alert"]}>
+                        <Alert
+                            id="alert"
+                            severity={error === null ? "success" : "error"}
+                            message={error === null ? "Request Successful!" : error as string}
+                            onClose={() => {
+                                setShowAlert(false);
+                                reduxDispatch(setWordCountProperty({ error: undefined }));
+                            }}
+                        />
+                    </div>
                 </Suspense>}
             {wordCountsInfo.length > 0 &&
                 <Suspense fallback={<></>}>
-                    <Accordion accordionData={wordCountsInfo} />
+                    <div className={styles["accordion"]}>
+                        <Accordion accordionData={wordCountsInfo} />
+                    </div>
                 </Suspense>}
-        </>
+        </div>
     );
 };
