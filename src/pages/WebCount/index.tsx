@@ -16,8 +16,7 @@ export const WordCount = () => {
     const [url, setUrl] = useState("");
     const [showAlert, setShowAlert] = useState(false);
 
-    const { pending, error, wordCountsInfo } = useSelector((state: AppState) => state.wordCounts);
-    console.info(pending, error, wordCountsInfo);
+    const { error, wordCountsInfo } = useSelector((state: AppState) => state.wordCounts);
 
     useEffect(() => {
         if (error === null || typeof error === "string") { setShowAlert(true); }
