@@ -12,7 +12,7 @@ const Accordion = React.lazy(() => import("../../organisms/Accordion").then(modu
 export const WordCount = () => {
     const { wordCountsInfo } = useSelector((state: AppState) => state.wordCounts);
 
-    const [url, setUrl] = useState<string>("");
+    const [url, setUrl] = useState("");
 
     const formFields = formMapping(url, setUrl);
 

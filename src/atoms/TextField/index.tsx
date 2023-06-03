@@ -14,13 +14,17 @@ export const TextField = memo(({
     error = false,
     helperText = null,
 }: TextFieldProps) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        onChange(event.target.value);
+    };
+
     return (
         <MUITextField
             className="text-field"
             id={id}
             value={value}
             label={label}
-            onChange={onChange}
+            onChange={handleChange}
             error={error}
             helperText={helperText}
         />
