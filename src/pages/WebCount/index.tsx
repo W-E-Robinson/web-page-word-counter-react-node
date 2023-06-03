@@ -1,6 +1,6 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useState, useMemo } from "react";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { AppState } from "../../modules/Redux/reducers/rootReducer";
 import { Form } from "../../molecules/Form";
@@ -10,11 +10,12 @@ import { Header } from "./components/Header";
 const Accordion = React.lazy(() => import("../../organisms/Accordion").then(module => ({ default: module.Accordion })));
 
 export const WordCount = () => {
+    const reduxDispatch = useDispatch();
     const { wordCountsInfo } = useSelector((state: AppState) => state.wordCounts);
 
     const [url, setUrl] = useState("");
 
-    const formFields = formMapping(url, setUrl);
+    const formFields = useMemo(() => formMapping(url, setUrl, reduxDispatch), [url]);
 
     return (
         <>
