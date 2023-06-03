@@ -11,7 +11,8 @@ const Accordion = React.lazy(() => import("../../organisms/Accordion").then(modu
 
 export const WordCount = () => {
     const reduxDispatch = useDispatch();
-    const { wordCountsInfo } = useSelector((state: AppState) => state.wordCounts);
+    const { pending, error, wordCountsInfo } = useSelector((state: AppState) => state.wordCounts);
+    console.info(pending, error, wordCountsInfo);
 
     const [url, setUrl] = useState("");
 
