@@ -12,6 +12,6 @@ describe("api testing", () => {
     test("getWordCount", () => {
         const mockWebPageUrl = "mockUrl";
         getWordCount(mockWebPageUrl);
-        expect(axios.get).toHaveBeenCalledWith("http://localhost:3000/api/counter/count?webPageUrl=mockUrl");
+        expect(axios.get).toHaveBeenCalledWith(`http://localhost:${process.env.REACT_APP_BACKEND_PORT_NUMBER}/api/counter/count?webPageUrl=mockUrl`);
     });
 });
