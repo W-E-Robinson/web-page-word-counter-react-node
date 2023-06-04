@@ -9,25 +9,25 @@ Accompanying backend repo: [web-page-word-counter-backend](https://github.com/W-
 Install dependencies
 
 ```bash
-  npm install
+npm install
 ```
 
 Create a .env file with a varible value of 3000 (when the backed is run in development mode) or 30099 (when the backend is in a kubernetes cluster)
 
 ```bash
-  REACT_APP_BACKEND_PORT_NUMBER=3000 OR 30099
+REACT_APP_BACKEND_PORT_NUMBER=3000 OR 30099
 ```
 
 Start the server
 
 ```bash
-  npm start
+npm start
 ```
 
 ## Run tests
 
 ```bash
-  npm test
+npm test
 ```
 
 ## Used git hooks
