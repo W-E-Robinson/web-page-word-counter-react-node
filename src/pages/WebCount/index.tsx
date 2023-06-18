@@ -14,7 +14,6 @@ const Alert = React.lazy(() => import("../../atoms/Alert").then(module => ({ def
 const Accordion = React.lazy(() => import("../../organisms/Accordion").then(module => ({ default: module.Accordion })));
 
 export const WordCount = () => {
-    throw new Error("Error triggered!");
     const reduxDispatch = useDispatch();
 
     const [url, setUrl] = useState("");
