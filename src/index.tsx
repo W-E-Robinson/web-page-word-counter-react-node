@@ -6,6 +6,7 @@ import ReactDOM from "react-dom/client";
 import { App } from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { configureStore } from "./modules/Redux/store";
+import { ErrorBoundary } from "./modules/ErrorBoundary";
 
 import "./index.sass";
 
@@ -17,9 +18,11 @@ const root = ReactDOM.createRoot(
 
 root.render(
     <React.StrictMode>
-        <Provider store={store}>
-            <App />
-        </Provider>
+        <ErrorBoundary>
+            <Provider store={store}>
+                <App />
+            </Provider>
+        </ErrorBoundary>
     </React.StrictMode>,
 );
 
