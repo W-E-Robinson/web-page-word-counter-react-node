@@ -4,6 +4,8 @@ import Typography from "@mui/material/Typography";
 
 import { State, Props } from "./types";
 
+import "./styles.sass";
+
 export class ErrorBoundary extends Component<Props, State> {
     public state: State = {
         hasError: false,
