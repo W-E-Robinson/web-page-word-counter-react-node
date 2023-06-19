@@ -1,5 +1,5 @@
 import { WebPageInfo } from "../../../actions/wordCount/types";
 
 export interface Api {
-    getWordCount: (webPageUrl: string) => Promise<WebPageInfo>;
+    getWordCount: (searchedUrls: string[], webPageUrl: string) => Promise<WebPageInfo>;
 }

@@ -16,6 +16,7 @@ describe("wordCountReducer testing", () => {
         const mockAction: FetchWordCountRequest = {
             type: FETCH_WORD_COUNT_REQUEST,
             payload: {
+                searchedUrls: ["mock searched url"],
                 webPageUrl: "mock url",
             },
         };

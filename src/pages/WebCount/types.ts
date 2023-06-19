@@ -6,4 +6,5 @@ export type FormMapping = (
     url: string,
     setUrl: React.Dispatch<React.SetStateAction<string>>,
     reduxDispatch: Dispatch<FetchWordCountRequest>,
+    searchedUrls: string[],
 ) => (ButtonComponentProps | TextFieldComponentProps)[];

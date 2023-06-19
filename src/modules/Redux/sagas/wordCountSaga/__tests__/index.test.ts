@@ -36,6 +36,7 @@ describe("fetchWordCountSaga testing", () => {
     const mockAction = {
         type: FETCH_WORD_COUNT_REQUEST,
         payload: {
+            searchedUrls: ["mock searched url"],
             webPageUrl: "mock url",
         },
     };
