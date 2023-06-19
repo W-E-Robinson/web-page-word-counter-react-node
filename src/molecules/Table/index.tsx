@@ -49,7 +49,7 @@ export const Table = memo(({
                         ))}
                 </TableBody>
                 <TablePagination
-                    rowsPerPageOptions={[5, 10, 25]}
+                    rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
                     component="div"
                     count={rows.length}
                     rowsPerPage={rowsPerPage}
