@@ -11,7 +11,7 @@ import { hasUrlBeenSearched } from "./functions/index";
 
 export function* fetchWordCountSaga(action: FetchWordCountRequest) {
     try {
-        if (hasUrlBeenSearched(action.payload.searchedUrls, action.payload.webPageUrl)) { throw new Error("This URL has already been searched"); }
+        if (hasUrlBeenSearched(action.payload.searchedUrls, action.payload.webPageUrl)) { throw new Error("That URL has already been searched"); }
 
         const response: WebPageInfo = yield call(
             getWordCount,
