@@ -7,7 +7,10 @@ import {
 
 describe("Actions - GET /wordCount", () => {
     test("fetchWordCountRequest", () => {
-        expect(fetchWordCountRequest({ webPageUrl: "mock url" }).type).toBe("FETCH_WORD_COUNT_REQUEST");
+        expect(fetchWordCountRequest({
+            searchedUrls: ["mock searched url"],
+            webPageUrl: "mock url",
+        }).type).toBe("FETCH_WORD_COUNT_REQUEST");
     });
     test("fetchWordCountFailure", () => {
         expect(fetchWordCountFailure({ error: "mock error" }).type).toBe("FETCH_WORD_COUNT_FAILURE");
