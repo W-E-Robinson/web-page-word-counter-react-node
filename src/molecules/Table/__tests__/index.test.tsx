@@ -1,6 +1,6 @@
 import React from "react";
 
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 
 import { Table } from "../index";
 
@@ -14,11 +14,11 @@ describe("Table testing", () => {
             { word: "fourth", count: 100 },
             { word: "fifth", count: 90 },
             { word: "sixth", count: 8 },
-            { word: "seventh", count: 5 },
-            { word: "eigth", count: 4 },
+            { word: "seventh", count: 6 },
+            { word: "eigth", count: 5 },
             { word: "ninth", count: 4 },
             { word: "tenth", count: 3 },
-            { word: "eleventh", count: 3 },
+            { word: "eleventh", count: 2 },
             { word: "twelth", count: 1 },
         ],
     };
@@ -49,15 +49,23 @@ describe("Table testing", () => {
         expect(screen.getByText("fifth")).toBeInTheDocument();
         expect(screen.getByText(90)).toBeInTheDocument();
     });
-    xtest("pagination", async () => {
+    test("pagination", async () => {
         render(<Table
             headers={mockProps.headers}
             rows={mockProps.rows}
         />);
 
-        expect(screen.getByText("first")).toBeInTheDocument();
-        expect(screen.getByText(1000)).toBeInTheDocument();
-        expect(screen.getByText("second")).toBeInTheDocument();
-        expect(screen.getByText(3)).toBeInTheDocument();
+        fireEvent.click(screen.getByTestId("KeyboardArrowRightIcon"));
+
+        expect(await screen.findByText("sixth")).toBeInTheDocument();
+        expect(await screen.findByText(8)).toBeInTheDocument();
+        expect(await screen.findByText("seventh")).toBeInTheDocument();
+        expect(await screen.findByText(6)).toBeInTheDocument();
+        expect(await screen.findByText("eigth")).toBeInTheDocument();
+        expect(await screen.findByText(5)).toBeInTheDocument();
+        expect(await screen.findByText("ninth")).toBeInTheDocument();
+        expect(await screen.findByText(4)).toBeInTheDocument();
+        expect(await screen.findByText("tenth")).toBeInTheDocument();
+        expect(await screen.findByText(3)).toBeInTheDocument();
     });
 });
