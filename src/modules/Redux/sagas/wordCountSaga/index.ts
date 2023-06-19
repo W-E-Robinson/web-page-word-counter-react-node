@@ -8,11 +8,12 @@ import {
 import { FETCH_WORD_COUNT_REQUEST } from "../../actions/wordCount/actionTypes";
 import { getWordCount } from "../../apis/wordCount";
 import { configureStore } from "../../store/index";
+import { hasUrlBeenSearched } from "./functions/index";
 
 export function* fetchWordCountSaga(action: FetchWordCountRequest) {
     try {
-        console.info(configureStore().getState());
-        if (typeof response === "string") { throw new Error(response); }
+        const searchedUrls = configureStore().getState().wordCounts.wordCountsInfo.map(wordCountInfo => wordCountInfo.webPageUrl);
+        if (hasUrlBeenSearched(searchedUrls, action.payload.webPageUrl)) { throw new Error("This URL has already been searched"); }
 
         const response: WebPageInfo = yield call(
             getWordCount,
