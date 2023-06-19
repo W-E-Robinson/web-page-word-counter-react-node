@@ -23,6 +23,7 @@ export interface WordCountState {
 }
 
 export interface FetchWordCountRequestPayload {
+    searchedUrls: string[];
     webPageUrl: string;
 }
 

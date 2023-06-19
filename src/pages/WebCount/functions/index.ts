@@ -1,7 +1,7 @@
 import { fetchWordCountRequest } from "../../../modules/Redux/actions/wordCount/actions";
 import { FormMapping } from "../types";
 
-export const formMapping: FormMapping = (url, setUrl, reduxDispatch) => {
+export const formMapping: FormMapping = (url, setUrl, reduxDispatch, searchedUrls) => {
     return [
         {
             component: "TEXT_FIELD" as const,
@@ -27,7 +27,7 @@ export const formMapping: FormMapping = (url, setUrl, reduxDispatch) => {
             variant: "contained" as const,
             disabled: !url.length,
             onClick: () => {
-                reduxDispatch(fetchWordCountRequest({ webPageUrl: url }));
+                reduxDispatch(fetchWordCountRequest({ searchedUrls, webPageUrl: url }));
                 setUrl("");
             },
         },

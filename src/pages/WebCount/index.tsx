@@ -25,7 +25,8 @@ export const WordCount = () => {
         if (error === null || typeof error === "string") { setShowAlert(true); }
     }, [error]);
 
-    const formFields = useMemo(() => formMapping(url, setUrl, reduxDispatch), [url]);
+    const searchedUrls = useMemo(() => wordCountsInfo.map(wordCountInfo => wordCountInfo.webPageUrl), [wordCountsInfo]);
+    const formFields = useMemo(() => formMapping(url, setUrl, reduxDispatch, searchedUrls), [url]);
 
     return (
         <div className={styles["container"]}>
