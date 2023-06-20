@@ -25,6 +25,7 @@ export const Accordion = memo(({
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon />}
                             id={data.webPageUrl}
+                            aria-controls={`${data.webPageUrl}-details`}
                         >
                             <Typography>Word Count: {data.totalWordCount}, URL: {data.webPageUrl}</Typography>
                         </AccordionSummary>
