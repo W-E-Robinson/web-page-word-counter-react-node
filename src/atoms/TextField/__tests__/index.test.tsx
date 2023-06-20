@@ -26,7 +26,7 @@ describe("TextField testing", () => {
             helperText={mockProps.helperText}
         />);
 
-        expect(screen.getByLabelText("mock label")).toBeInTheDocument();
+        expect(screen.getAllByLabelText("mock label")[0]).toBeInTheDocument();
     });
     test("onChange mock jest firing", () => {
         render(<TextField
@@ -38,7 +38,7 @@ describe("TextField testing", () => {
             helperText={mockProps.helperText}
         />);
 
-        const textField = screen.getByLabelText("mock label");
+        const textField = screen.getAllByLabelText("mock label")[0];
         fireEvent.change(textField, { target: { value: "1" } });
         expect(mockOnChange).toHaveBeenCalledTimes(1);
     });
