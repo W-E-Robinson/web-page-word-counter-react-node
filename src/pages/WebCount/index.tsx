@@ -29,12 +29,12 @@ export const WordCount = () => {
     const formFields = useMemo(() => formMapping(url, setUrl, reduxDispatch, searchedUrls), [url]);
 
     return (
-        <div className={styles["container"]}>
+        <div className={styles["container"]} role="main">
             <Header />
             <Form fields={formFields} id="url-input-form" />
             {showAlert &&
                 <Suspense fallback={<></>}>
-                    <div className={styles["alert"]}>
+                    <div className={styles["alert"]} aria-live="polite">
                         <Alert
                             id="alert"
                             severity={error === null ? "success" : "error"}
@@ -48,7 +48,7 @@ export const WordCount = () => {
                 </Suspense>}
             {wordCountsInfo.length > 0 &&
                 <Suspense fallback={<></>}>
-                    <div className={styles["accordion"]}>
+                    <div className={styles["accordion"]} role="region" aria-label="Word Count Results">
                         <Accordion accordionData={wordCountsInfo} />
                     </div>
                 </Suspense>}
