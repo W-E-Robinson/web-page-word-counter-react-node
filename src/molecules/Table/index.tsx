@@ -14,6 +14,7 @@ import { TableProps } from "./types";
 export const Table = memo(({
     headers,
     rows,
+    caption,
 }: TableProps) => {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -29,7 +30,8 @@ export const Table = memo(({
 
     return (
         <TableContainer component={Paper}>
-            <MUITable aria-label="table">
+            <MUITable>
+                <caption>{caption}</caption>
                 <TableHead>
                     <TableRow>
                         {headers.map((header) => {

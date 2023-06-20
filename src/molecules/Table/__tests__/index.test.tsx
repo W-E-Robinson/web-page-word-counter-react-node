@@ -21,12 +21,14 @@ describe("Table testing", () => {
             { word: "eleventh", count: 2 },
             { word: "twelth", count: 1 },
         ],
+        caption: "mock caption",
     };
 
     test("headers rendering", () => {
         render(<Table
             headers={mockProps.headers}
             rows={mockProps.rows}
+            caption={mockProps.caption}
         />);
 
         expect(screen.getByText("Word")).toBeInTheDocument();
@@ -36,6 +38,7 @@ describe("Table testing", () => {
         render(<Table
             headers={mockProps.headers}
             rows={mockProps.rows}
+            caption={mockProps.caption}
         />);
 
         expect(screen.getByText("first")).toBeInTheDocument();
@@ -53,6 +56,7 @@ describe("Table testing", () => {
         render(<Table
             headers={mockProps.headers}
             rows={mockProps.rows}
+            caption={mockProps.caption}
         />);
 
         fireEvent.click(screen.getByTestId("KeyboardArrowRightIcon"));

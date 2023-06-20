@@ -30,7 +30,11 @@ export const Accordion = memo(({
                         </AccordionSummary>
                         <AccordionDetails>
                             {/* @ts-ignore */}
-                            <Table headers={["Word", "Count"]} rows={data.destructuredWordCount} />
+                            <Table
+                                headers={["Word", "Count"]}
+                                rows={data.destructuredWordCount}
+                                caption="A table to show the frequency of words for the given URL"
+                            />
                         </AccordionDetails>
                     </MUIAccordion>
                 );
