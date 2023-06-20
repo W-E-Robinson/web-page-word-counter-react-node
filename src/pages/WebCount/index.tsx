@@ -31,7 +31,7 @@ export const WordCount = () => {
     return (
         <div className={styles["container"]}>
             <Header />
-            <Form fields={formFields} />
+            <Form fields={formFields} id="url-input-form" />
             {showAlert &&
                 <Suspense fallback={<></>}>
                     <div className={styles["alert"]}>

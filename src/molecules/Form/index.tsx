@@ -8,9 +8,10 @@ import styles from "./styles.module.sass";
 
 export const Form = ({
     fields,
+    id,
 }: FormProps) => {
     return (
-        <div className={styles["container"]}>
+        <div className={styles["container"]} aria-label={id}>
             {fields.map((field, index) => {
                 if (field.component === "TEXT_FIELD") {
                     return (

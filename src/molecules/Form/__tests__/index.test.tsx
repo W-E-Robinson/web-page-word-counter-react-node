@@ -29,7 +29,7 @@ describe("Form testing with text field and button", () => {
     ];
 
     test("Form fields rendering", () => {
-        render(<Form fields={mockFields} />);
+        render(<Form fields={mockFields} id="mock-id" />);
 
         expect(screen.getByLabelText("text field mock label")).toBeInTheDocument();
         expect(screen.getByText("button mock label")).toBeInTheDocument();

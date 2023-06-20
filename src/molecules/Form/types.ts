@@ -11,4 +11,5 @@ export interface ButtonComponentProps extends ButtonProps {
 
 export interface FormProps {
     fields: (ButtonComponentProps | TextFieldComponentProps)[];
+    id: string;
 }
