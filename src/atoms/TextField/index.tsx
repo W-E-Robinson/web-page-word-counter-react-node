@@ -27,6 +27,8 @@ export const TextField = memo(({
             onChange={handleChange}
             error={error}
             helperText={helperText}
+            aria-label={label}
+            aria-invalid={!!error}
         />
     );
 });

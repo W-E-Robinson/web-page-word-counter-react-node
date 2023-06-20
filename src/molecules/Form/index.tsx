@@ -38,6 +38,7 @@ export const Form = ({
                         </div>
                     );
                 }
+                return null;
             })}
         </div>
     );
