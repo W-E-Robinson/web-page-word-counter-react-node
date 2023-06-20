@@ -20,6 +20,7 @@ export const Button = memo(({
             disabled={disabled}
             onClick={onClick}
             variant={variant}
+            aria-disabled={disabled}
         >
             {label}
         </MUIButton>
