@@ -15,9 +15,9 @@ describe("Table testing", () => {
             { word: "fifth", count: 90 },
             { word: "sixth", count: 8 },
             { word: "seventh", count: 6 },
-            { word: "eigth", count: 5 },
-            { word: "ninth", count: 4 },
-            { word: "tenth", count: 3 },
+            { word: "eigth", count: 4 },
+            { word: "ninth", count: 3 },
+            { word: "tenth", count: 2 },
             { word: "eleventh", count: 2 },
             { word: "twelth", count: 1 },
         ],
@@ -62,10 +62,10 @@ describe("Table testing", () => {
         expect(await screen.findByText("seventh")).toBeInTheDocument();
         expect(await screen.findByText(6)).toBeInTheDocument();
         expect(await screen.findByText("eigth")).toBeInTheDocument();
-        expect(await screen.findByText(5)).toBeInTheDocument();
-        expect(await screen.findByText("ninth")).toBeInTheDocument();
         expect(await screen.findByText(4)).toBeInTheDocument();
-        expect(await screen.findByText("tenth")).toBeInTheDocument();
+        expect(await screen.findByText("ninth")).toBeInTheDocument();
         expect(await screen.findByText(3)).toBeInTheDocument();
+        expect(await screen.findByText("tenth")).toBeInTheDocument();
+        expect(await screen.findByText(2)).toBeInTheDocument();
     });
 });
