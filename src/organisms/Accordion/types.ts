@@ -1,5 +1,14 @@
-import { WebPageInfo } from "../../modules/Redux/actions/wordCount/types";
+import { ReactNode } from "react";
+
+interface AccordionContent {
+    accordionSummary: {
+        id: string;
+        title: string;
+        ariaControls: string;//end in details
+    }
+    contentComponent: ReactNode;
+}
 
 export interface AccordionProps {
-    accordionData: WebPageInfo[];
+    accordionContent: AccordionContent[];
 }
