@@ -1,5 +1,7 @@
+export type TableRowObjShape = Record<string, string | number | null>;
+
 export interface TableProps {
     headers: string[];
-    rows: Array<Record<string, number | string | null | undefined>>;
+    rows: TableRowObjShape[];
     caption: string;
 }

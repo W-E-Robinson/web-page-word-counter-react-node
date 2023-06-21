@@ -6,17 +6,14 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-import { Table } from "../../molecules/Table";
-
 import { AccordionProps } from "./types";
+
 import "./styles.sass";
 
-export const Accordion = memo(({
-    accordionData,
-}: AccordionProps) => {
+export const Accordion = memo(({ accordionContent }: AccordionProps) => {
     return (
         <>
-            {accordionData.map((data) => {
+            {accordionContent.map((content) => {
                 return (
                     <MUIAccordion
                         className="accordion-organism"
@@ -24,18 +21,13 @@ export const Accordion = memo(({
                     >
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon />}
-                            id={data.webPageUrl}
-                            aria-controls={`${data.webPageUrl}-details`}
+                            id={content.accordionSummary.id}
+                            aria-controls={content.accordionSummary.ariaControls}
                         >
-                            <Typography>Word Count: {data.totalWordCount}, URL: {data.webPageUrl}</Typography>
+                            <Typography>{content.accordionSummary.title}</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                            {/* @ts-ignore */}
-                            <Table
-                                headers={["Word", "Count"]}
-                                rows={data.destructuredWordCount}
-                                caption="A table to show the frequency of words for the given URL"
-                            />
+                            {content.contentComponent}
                         </AccordionDetails>
                     </MUIAccordion>
                 );

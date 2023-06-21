@@ -1,6 +1,7 @@
 import { Dispatch } from "react";
-import { FetchWordCountRequest } from "../../modules/Redux/actions/wordCount/types";
+import { FetchWordCountRequest, WebPageInfo, Word } from "../../modules/Redux/actions/wordCount/types";
 import { ButtonComponentProps, TextFieldComponentProps } from "../../molecules/Form/types";
+import { AccordionContent } from "../../organisms/Accordion/types";
 
 export type FormMapping = (
     url: string,
@@ -8,3 +9,12 @@ export type FormMapping = (
     reduxDispatch: Dispatch<FetchWordCountRequest>,
     searchedUrls: string[],
 ) => (ButtonComponentProps | TextFieldComponentProps)[];
+
+export type FormatAccordionContent = (
+    wordCountsInfo: WebPageInfo[],
+) => AccordionContent[];
+
+export interface WordTableProps {
+    destructuredWordCount: Word[];
+    url: string;
+}
