@@ -4,51 +4,47 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import { Accordion } from "../index";
+import { Table } from "../../../molecules/Table/index";
 
 describe("Accordion testing", () => {
-    const mockAccordionData = [
+    const mockRows = [
+        { word: "to", count: 13 },
+        { word: "and", count: 12 },
+    ];
+
+    const mockAccordionContent = [
         {
-            webPageUrl: "mock url 1",
-            totalWordCount: 1000,
-            destructuredWordCount: [
-                { word: "the", count: 110 },
-                { word: "hello", count: 44 },
-            ],
-        },
-        {
-            webPageUrl: "mock url 2",
-            totalWordCount: 2000,
-            destructuredWordCount: [
-                { word: "a", count: 102 },
-                { word: "tree", count: 3 },
-            ],
-        },
-        {
-            webPageUrl: "mock url 3",
-            totalWordCount: 3000,
-            destructuredWordCount: [
-                { word: "an", count: 101 },
-                { word: "ball", count: 3 },
-            ],
+            accordionSummary: {
+                id: "mockId",
+                title: "Mock First Accordion Title",
+                ariaControls: "mockAriaControls",
+            },
+            contentComponent:
+                <Table
+                    headers={["First Column Title", "Second Column Title"]}
+                    rows={mockRows}
+                    caption="This is a mock caption"
+                />,
         },
     ];
 
     test("accordion title information rendering", () => {
-        render(<Accordion accordionData={mockAccordionData} />);
+        render(<Accordion accordionContent={mockAccordionContent} />);
 
-        expect(screen.getByText("Word Count: 1000, URL: mock url 1")).toBeInTheDocument();
-        expect(screen.getByText("Word Count: 2000, URL: mock url 2")).toBeInTheDocument();
-        expect(screen.getByText("Word Count: 3000, URL: mock url 3")).toBeInTheDocument();
+        expect(screen.getByText("Mock First Accordion Title")).toBeInTheDocument();
     });
     test("expandable data rendering", async () => {
-        const { getByText, findByText } = render(<Accordion accordionData={mockAccordionData} />);
+        const { getByText, findByText } = render(<Accordion accordionContent={mockAccordionContent} />);
 
-        const firstAccordion = getByText("Word Count: 1000, URL: mock url 1");
+        const firstAccordion = getByText("Mock First Accordion Title");
         userEvent.click(firstAccordion);
 
-        expect(await findByText("the")).toBeInTheDocument();
-        expect(await findByText("hello")).toBeInTheDocument();
-        expect(await findByText(110)).toBeInTheDocument();
-        expect(await findByText(44)).toBeInTheDocument();
+        expect(await findByText("First Column Title")).toBeInTheDocument();
+        expect(await findByText("Second Column Title")).toBeInTheDocument();
+        expect(await findByText("to")).toBeInTheDocument();
+        expect(await findByText("and")).toBeInTheDocument();
+        expect(await findByText(13)).toBeInTheDocument();
+        expect(await findByText(12)).toBeInTheDocument();
+        expect(await findByText("This is a mock caption")).toBeInTheDocument();
     });
 });
