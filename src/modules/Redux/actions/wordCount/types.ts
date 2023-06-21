@@ -1,3 +1,4 @@
+import { TableRowObjShape } from "../../../../molecules/Table/types";
 import {
     FETCH_WORD_COUNT_REQUEST,
     FETCH_WORD_COUNT_SUCCESS,
@@ -5,7 +6,7 @@ import {
     SET_WORD_COUNT_PROPERTY,
 } from "./actionTypes";
 
-export interface Word {
+export interface Word extends TableRowObjShape {
     word: string;
     count: number;
 }
