@@ -6,7 +6,6 @@ import { AppState } from "../../modules/Redux/reducers/rootReducer";
 import { Form } from "../../molecules/Form";
 import { formMapping } from "./functions";
 import { Header } from "./components/Header";
-import { WordTable } from "./components/WordTable";
 import { setWordCountProperty } from "../../modules/Redux/actions/wordCount/actions";
 
 import styles from "./styles.module.sass";
@@ -15,6 +14,7 @@ import { WebPageInfo } from "../../modules/Redux/actions/wordCount/types";
 
 const Alert = React.lazy(() => import("../../atoms/Alert").then(module => ({ default: module.Alert })));
 const Accordion = React.lazy(() => import("../../organisms/Accordion").then(module => ({ default: module.Accordion })));
+const WordTable = React.lazy(() => import("./components/WordTable").then(module => ({ default: module.WordTable })));
 
 export const WordCount = () => {
     const reduxDispatch = useDispatch();
@@ -39,10 +39,13 @@ export const WordCount = () => {
                     title: `Word Count: ${info.totalWordCount}, URL: ${info.webPageUrl}`,
                     ariaControls: `${info.webPageUrl}-details`,
                 },
-                contentComponent: <WordTable
-                    destructuredWordCount={info.destructuredWordCount}
-                    url={info.webPageUrl}
-                />,
+                contentComponent:
+                    <Suspense fallback={<></>}>
+                        <WordTable
+                            destructuredWordCount={info.destructuredWordCount}
+                            url={info.webPageUrl}
+                        />
+                    </Suspense>,
             };
         });
     }, []);
