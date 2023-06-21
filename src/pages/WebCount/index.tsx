@@ -6,9 +6,11 @@ import { AppState } from "../../modules/Redux/reducers/rootReducer";
 import { Form } from "../../molecules/Form";
 import { formMapping } from "./functions";
 import { Header } from "./components/Header";
+import { WordTable } from "./components/WordTable";
 import { setWordCountProperty } from "../../modules/Redux/actions/wordCount/actions";
 
 import styles from "./styles.module.sass";
+import { FormatAccordionContent } from "./types";
 
 const Alert = React.lazy(() => import("../../atoms/Alert").then(module => ({ default: module.Alert })));
 const Accordion = React.lazy(() => import("../../organisms/Accordion").then(module => ({ default: module.Accordion })));
@@ -27,6 +29,22 @@ export const WordCount = () => {
 
     const searchedUrls = useMemo(() => wordCountsInfo.map(wordCountInfo => wordCountInfo.webPageUrl), [wordCountsInfo]);
     const formFields = useMemo(() => formMapping(url, setUrl, reduxDispatch, searchedUrls), [url]);
+
+    const formatAccordionContent: FormatAccordionContent = (wordCountsInfo) => {
+        return wordCountsInfo.map((info) => {
+            return {
+                accordionSummary: {
+                    id: info.webPageUrl,
+                    title: `Word Count: ${info.totalWordCount}, URL: ${info.webPageUrl}`,
+                    ariaControls: `${info.webPageUrl}-details`,
+                },
+                contentComponent: <WordTable
+                    destructuredWordCount={info.destructuredWordCount}
+                    url={info.webPageUrl}
+                />,
+            };
+        });
+    };
 
     return (
         <div className={styles["container"]} role="main">
@@ -49,7 +67,7 @@ export const WordCount = () => {
             {wordCountsInfo.length > 0 &&
                 <Suspense fallback={<></>}>
                     <div className={styles["accordion"]} role="region" aria-label="Word Count Results">
-                        <Accordion accordionData={wordCountsInfo} />
+                        <Accordion accordionContent={formatAccordionContent(wordCountsInfo)} />
                     </div>
                 </Suspense>}
         </div>

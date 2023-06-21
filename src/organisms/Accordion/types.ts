@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 
-interface AccordionContent {
+export interface AccordionContent {
     accordionSummary: {
         id: string;
         title: string;
-        ariaControls: string;//end in details
+        ariaControls: string;
     }
     contentComponent: ReactNode;
 }
