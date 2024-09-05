@@ -1,22 +1,22 @@
-import React from "react";
+import React from 'react';
 
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
-import { Button } from "../index";
+import { Button } from '../index';
 
-describe("Button testing", () => {
+describe('Button testing', () => {
     const mockOnClick = jest.fn();
 
     const mockProps = {
-        id: "mock id",
-        label: "mock label",
-        variant: "contained" as const,
+        id: 'mock id',
+        label: 'mock label',
+        variant: 'contained' as const,
         disabled: false,
         onClick: mockOnClick,
     };
 
-    test("label rendering", () => {
+    test('label rendering', () => {
         render(<Button
             id={mockProps.id}
             label={mockProps.label}
@@ -25,9 +25,9 @@ describe("Button testing", () => {
             onClick={mockProps.onClick}
         />);
 
-        expect(screen.getByText("mock label")).toBeInTheDocument();
+        expect(screen.getByText('mock label')).toBeInTheDocument();
     });
-    test("onClick function calling", () => {
+    test('onClick function calling', () => {
         render(<Button
             id={mockProps.id}
             label={mockProps.label}
@@ -36,10 +36,10 @@ describe("Button testing", () => {
             onClick={mockProps.onClick}
         />);
 
-        userEvent.click(screen.getByText("mock label"));
+        userEvent.click(screen.getByText('mock label'));
         expect(mockOnClick).toHaveBeenCalledTimes(1);
     });
-    test("button is disabled", () => {
+    test('button is disabled', () => {
         render(<Button
             id={mockProps.id}
             label={mockProps.label}
@@ -48,6 +48,6 @@ describe("Button testing", () => {
             onClick={mockProps.onClick}
         />);
 
-        expect(screen.getByText("mock label").closest("button")).toBeDisabled();
+        expect(screen.getByText('mock label').closest('button')).toBeDisabled();
     });
 });

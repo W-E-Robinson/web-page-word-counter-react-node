@@ -1,10 +1,10 @@
-import React, { memo } from "react";
+import React, { memo } from 'react';
 
-import { TextField as MUITextField } from "@mui/material";
+import { TextField as MUITextField } from '@mui/material';
 
-import { TextFieldProps } from "./types";
+import { TextFieldProps } from './types';
 
-import "./styles.sass";
+import './styles.sass';
 
 export const TextField = memo(({
     id,

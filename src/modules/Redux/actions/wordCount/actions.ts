@@ -7,13 +7,13 @@ import {
     FetchWordCountFailurePayload,
     SetWordCountProperty,
     SetWordCountPropertyPayload,
-} from "./types";
+} from './types';
 import {
     FETCH_WORD_COUNT_REQUEST,
     FETCH_WORD_COUNT_SUCCESS,
     FETCH_WORD_COUNT_FAILURE,
     SET_WORD_COUNT_PROPERTY,
-} from "./actionTypes";
+} from './actionTypes';
 
 export const fetchWordCountRequest = (
     payload: FetchWordCountRequestPayload,

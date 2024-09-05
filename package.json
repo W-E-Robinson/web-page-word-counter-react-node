@@ -2,6 +2,17 @@
     "name": "web-page-word-counter-frontend",
     "version": "0.1.0",
     "private": true,
+    "scripts": {
+        "start": "PORT=3001 react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix .",
+        "pretsc": "rimraf -g ./dist/*",
+        "tsc": "tsc -p tsconfig.build.json",
+        "posttsc": "need to copy in public?"
+    },
     "dependencies": {
         "@emotion/react": "^11.11.0",
         "@emotion/styled": "^11.11.0",
@@ -37,17 +48,6 @@
         "eslint-plugin-promise": "^6.1.1",
         "redux-saga-test-plan": "^4.0.6",
         "sass": "^1.62.1"
-    },
-    "scripts": {
-        "start": "PORT=3001 react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
-        "lint": "eslint .",
-        "lint:fix": "eslint --fix .",
-        "pretsc": "rimraf -g ./dist/*",
-        "tsc": "tsc -p tsconfig.build.json",
-        "posttsc": "need to copy in public?"
     },
     "browserslist": {
         "production": [

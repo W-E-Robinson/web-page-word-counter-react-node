@@ -3,11 +3,11 @@ import {
     FETCH_WORD_COUNT_SUCCESS,
     FETCH_WORD_COUNT_FAILURE,
     SET_WORD_COUNT_PROPERTY,
-} from "../../actions/wordCount/actionTypes";
+} from '../../actions/wordCount/actionTypes';
 import {
     WordCountActions,
     WordCountState,
-} from "../../actions/wordCount/types";
+} from '../../actions/wordCount/types';
 
 export const initialState: WordCountState = {
     pending: false,

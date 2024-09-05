@@ -1,5 +1,5 @@
-import React from "react";
+import React from 'react';
 
-import { WordCount } from "./pages/WebCount/index";
+import { WordCount } from './pages/WebCount/index';
 
 export const App = () => <WordCount />;

@@ -1,6 +1,6 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
-import { wordCountReducer } from "../wordCountReducer/index";
+import { wordCountReducer } from '../wordCountReducer/index';
 
 export const rootReducer = combineReducers({
     wordCounts: wordCountReducer,

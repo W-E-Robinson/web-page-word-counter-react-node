@@ -1,6 +1,6 @@
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError } from 'axios';
 
-import { COUNTER_SERVICE } from "../../../../constants/endpoints/index";
+import { COUNTER_SERVICE } from '../../../../constants/endpoints/index';
 
 export const getWordCount = async (
     webPageUrl: string,

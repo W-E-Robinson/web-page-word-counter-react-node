@@ -1,10 +1,10 @@
-import { TableRowObjShape } from "../../../../molecules/Table/types";
+import { TableRowObjShape } from '../../../../molecules/Table/types';
 import {
     FETCH_WORD_COUNT_REQUEST,
     FETCH_WORD_COUNT_SUCCESS,
     FETCH_WORD_COUNT_FAILURE,
     SET_WORD_COUNT_PROPERTY,
-} from "./actionTypes";
+} from './actionTypes';
 
 export interface Word extends TableRowObjShape {
     word: string;
@@ -39,7 +39,7 @@ export interface FetchWordCountFailurePayload {
 export type FetchWordCountRequest = {
     type: typeof FETCH_WORD_COUNT_REQUEST;
     payload: FetchWordCountRequestPayload,
-}
+};
 
 export type FetchWordCountSuccess = {
     type: typeof FETCH_WORD_COUNT_SUCCESS;

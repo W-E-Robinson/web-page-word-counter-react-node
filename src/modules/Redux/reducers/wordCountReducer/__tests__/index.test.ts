@@ -3,21 +3,23 @@ import {
     FETCH_WORD_COUNT_SUCCESS,
     FETCH_WORD_COUNT_FAILURE,
     SET_WORD_COUNT_PROPERTY,
-} from "../../../actions/wordCount/actionTypes";
-import { FetchWordCountFailure, FetchWordCountRequest, FetchWordCountSuccess, SetWordCountProperty } from "../../../actions/wordCount/types";
+} from '../../../actions/wordCount/actionTypes';
+import {
+    FetchWordCountFailure, FetchWordCountRequest, FetchWordCountSuccess, SetWordCountProperty,
+} from '../../../actions/wordCount/types';
 
 import {
     initialState,
     wordCountReducer,
-} from "../index";
+} from '../index';
 
-describe("wordCountReducer testing", () => {
-    test("FETCH_WORD_COUNT_REQUEST", () => {
+describe('wordCountReducer testing', () => {
+    test('FETCH_WORD_COUNT_REQUEST', () => {
         const mockAction: FetchWordCountRequest = {
             type: FETCH_WORD_COUNT_REQUEST,
             payload: {
-                searchedUrls: ["mock searched url"],
-                webPageUrl: "mock url",
+                searchedUrls: ['mock searched url'],
+                webPageUrl: 'mock url',
             },
         };
         const updatedState = wordCountReducer(initialState, mockAction);
@@ -27,17 +29,17 @@ describe("wordCountReducer testing", () => {
         expect(updatedState.wordCountsInfo).toEqual([]);
     });
 
-    test("FETCH_WORD_COUNT_SUCCESS", () => {
+    test('FETCH_WORD_COUNT_SUCCESS', () => {
         const mockAction: FetchWordCountSuccess = {
             type: FETCH_WORD_COUNT_SUCCESS,
             payload: {
                 webPageInfo: {
-                    webPageUrl: "mock url",
+                    webPageUrl: 'mock url',
                     totalWordCount: 10,
                     destructuredWordCount: [
-                        { word: "the", count: 100 },
-                        { word: "and", count: 90 },
-                        { word: "umbrella", count: 2 },
+                        { word: 'the', count: 100 },
+                        { word: 'and', count: 90 },
+                        { word: 'umbrella', count: 2 },
                     ],
                 },
             },
@@ -49,11 +51,11 @@ describe("wordCountReducer testing", () => {
         expect(updatedState.wordCountsInfo).toEqual([mockAction.payload.webPageInfo]);
     });
 
-    test("FETCH_WORD_COUNT_FAILURE", () => {
+    test('FETCH_WORD_COUNT_FAILURE', () => {
         const mockAction: FetchWordCountFailure = {
             type: FETCH_WORD_COUNT_FAILURE,
             payload: {
-                error: "mock error message",
+                error: 'mock error message',
             },
         };
         const updatedState = wordCountReducer(initialState, mockAction);
@@ -63,15 +65,15 @@ describe("wordCountReducer testing", () => {
         expect(updatedState.wordCountsInfo).toEqual([]);
     });
 
-    test("SET_WORD_COUNT_PROPERTY", () => {
+    test('SET_WORD_COUNT_PROPERTY', () => {
         const mockAction: SetWordCountProperty = {
             type: SET_WORD_COUNT_PROPERTY,
             payload: {
-                error: "mock error",
+                error: 'mock error',
             },
         };
         const updatedState = wordCountReducer(initialState, mockAction);
 
-        expect(updatedState.error).toEqual("mock error");
+        expect(updatedState.error).toEqual('mock error');
     });
 });

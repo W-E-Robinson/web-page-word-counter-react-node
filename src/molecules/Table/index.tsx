@@ -1,15 +1,15 @@
-import React, { memo, useState } from "react";
+import React, { memo, useState } from 'react';
 
-import { Table as MUITable } from "@mui/material";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TablePagination from "@mui/material/TablePagination";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import { Table as MUITable } from '@mui/material';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TablePagination from '@mui/material/TablePagination';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
-import { TableProps } from "./types";
+import { TableProps } from './types';
 
 export const Table = memo(({
     headers,
@@ -34,9 +34,7 @@ export const Table = memo(({
                 <caption>{caption}</caption>
                 <TableHead>
                     <TableRow>
-                        {headers.map((header) => {
-                            return <TableCell>{header}</TableCell>;
-                        })}
+                        {headers.map((header) => <TableCell>{header}</TableCell>)}
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -44,14 +42,12 @@ export const Table = memo(({
                         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         .map((row) => (
                             <TableRow key={Object.keys(row)[0]}>
-                                {Object.values(row).map((cell) => {
-                                    return <TableCell>{cell}</TableCell>;
-                                })}
+                                {Object.values(row).map((cell) => <TableCell>{cell}</TableCell>)}
                             </TableRow>
                         ))}
                 </TableBody>
                 <TablePagination
-                    rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+                    rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
                     component="div"
                     count={rows.length}
                     rowsPerPage={rowsPerPage}

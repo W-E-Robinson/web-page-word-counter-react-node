@@ -1,10 +1,10 @@
-import React, { Component, ErrorInfo } from "react";
+import React, { Component, ErrorInfo } from 'react';
 
-import Typography from "@mui/material/Typography";
+import Typography from '@mui/material/Typography';
 
-import { State, Props } from "./types";
+import { State, Props } from './types';
 
-import "./styles.sass";
+import './styles.sass';
 
 export class ErrorBoundary extends Component<Props, State> {
     public state: State = {
@@ -16,7 +16,7 @@ export class ErrorBoundary extends Component<Props, State> {
     }
 
     public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-        console.error("Uncaught error:", error, errorInfo);
+        console.error('Uncaught error:', error, errorInfo);
     }
 
     public render() {
