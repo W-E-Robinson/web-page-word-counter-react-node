@@ -1,22 +1,22 @@
-import React from "react";
+import React from 'react';
 
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from '@testing-library/react';
 
-import { TextField } from "../index";
+import { TextField } from '../index';
 
-describe("TextField testing", () => {
+describe('TextField testing', () => {
     const mockOnChange = jest.fn();
 
     const mockProps = {
-        id: "mock id",
-        label: "mock label",
+        id: 'mock id',
+        label: 'mock label',
         onChange: mockOnChange,
-        value: "",
+        value: '',
         error: false,
         helperText: null,
     };
 
-    test("label rendering", () => {
+    test('label rendering', () => {
         render(<TextField
             id={mockProps.id}
             label={mockProps.label}
@@ -26,9 +26,9 @@ describe("TextField testing", () => {
             helperText={mockProps.helperText}
         />);
 
-        expect(screen.getAllByLabelText("mock label")[0]).toBeInTheDocument();
+        expect(screen.getAllByLabelText('mock label')[0]).toBeInTheDocument();
     });
-    test("onChange mock jest firing", () => {
+    test('onChange mock jest firing', () => {
         render(<TextField
             id={mockProps.id}
             label={mockProps.label}
@@ -38,11 +38,11 @@ describe("TextField testing", () => {
             helperText={mockProps.helperText}
         />);
 
-        const textField = screen.getAllByLabelText("mock label")[0];
-        fireEvent.change(textField, { target: { value: "1" } });
+        const textField = screen.getAllByLabelText('mock label')[0];
+        fireEvent.change(textField, { target: { value: '1' } });
         expect(mockOnChange).toHaveBeenCalledTimes(1);
     });
-    test("error and helperText", () => {
+    test('error and helperText', () => {
         render(<TextField
             id={mockProps.id}
             label={mockProps.label}
@@ -52,6 +52,6 @@ describe("TextField testing", () => {
             helperText="mock helper text"
         />);
 
-        expect(screen.getByText("mock helper text")).toBeInTheDocument();
+        expect(screen.getByText('mock helper text')).toBeInTheDocument();
     });
 });

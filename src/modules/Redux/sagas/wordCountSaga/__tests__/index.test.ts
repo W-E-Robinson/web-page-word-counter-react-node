@@ -1,24 +1,24 @@
-import { call, put, take } from "redux-saga/effects";
-import { expectSaga } from "redux-saga-test-plan";
+import { call, put, take } from 'redux-saga/effects';
+import { expectSaga } from 'redux-saga-test-plan';
 
-import { FETCH_WORD_COUNT_REQUEST } from "../../../actions/wordCount/actionTypes";
-import { fetchWordCountSaga } from "../index";
+import { FETCH_WORD_COUNT_REQUEST } from '../../../actions/wordCount/actionTypes';
+import { fetchWordCountSaga } from '../index';
 import {
     fetchWordCountSuccess,
     fetchWordCountFailure,
-} from "../../../actions/wordCount/actions";
-import { getWordCount } from "../../../apis/wordCount";
-import { FetchWordCountRequest, WebPageInfo } from "../../../actions/wordCount/types";
-import { Api } from "./types";
+} from '../../../actions/wordCount/actions';
+import { getWordCount } from '../../../apis/wordCount';
+import { FetchWordCountRequest, WebPageInfo } from '../../../actions/wordCount/types';
+import { Api } from './types';
 
-describe("fetchWordCountSaga testing", () => {
+describe('fetchWordCountSaga testing', () => {
     const mockWebPageInfo = {
-        webPageUrl: "mock url",
+        webPageUrl: 'mock url',
         totalWordCount: 10,
         destructuredWordCount: [
-            { word: "the", count: 100 },
-            { word: "and", count: 90 },
-            { word: "umbrella", count: 2 },
+            { word: 'the', count: 100 },
+            { word: 'and', count: 90 },
+            { word: 'umbrella', count: 2 },
         ],
     };
 
@@ -36,12 +36,12 @@ describe("fetchWordCountSaga testing", () => {
     const mockAction = {
         type: FETCH_WORD_COUNT_REQUEST,
         payload: {
-            searchedUrls: ["mock searched url"],
-            webPageUrl: "mock url",
+            searchedUrls: ['mock searched url'],
+            webPageUrl: 'mock url',
         },
     };
 
-    test("mockSaga", () => {
+    test('mockSaga', () => {
         const api = {
             getWordCount: (resource: string) => ({ resource }),
         };
@@ -50,16 +50,16 @@ describe("fetchWordCountSaga testing", () => {
         return expectSaga(mockSaga, api)
             .put({
                 type: FETCH_WORD_COUNT_REQUEST,
-                payload: { resource: "mockResource" },
+                payload: { resource: 'mockResource' },
             })
             .dispatch({
                 type: FETCH_WORD_COUNT_REQUEST,
-                payload: "mockResource",
+                payload: 'mockResource',
             })
             .run();
     });
 
-    test("successful response", () => {
+    test('successful response', () => {
         const response = mockWebPageInfo;
 
         const generator = fetchWordCountSaga(mockAction as FetchWordCountRequest);
@@ -75,9 +75,9 @@ describe("fetchWordCountSaga testing", () => {
         ));
     });
 
-    test("error response", () => {
+    test('error response', () => {
         const response = {
-            message: "mock error",
+            message: 'mock error',
         };
 
         const generator = fetchWordCountSaga(mockAction as FetchWordCountRequest);

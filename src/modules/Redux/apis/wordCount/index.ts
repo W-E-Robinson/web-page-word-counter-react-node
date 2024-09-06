@@ -1,17 +1,17 @@
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError } from 'axios';
 
-import { COUNTER_SERVICE } from "../../../../constants/endpoints/index";
+import BACKEND_PORT from '../../../../constants/endpoints';
 
-export const getWordCount = async (
-    webPageUrl: string,
+const getWordCount = async (
+    url: string,
 ) => {
-    const url = `${COUNTER_SERVICE}/count?webPageUrl=${webPageUrl}`;
-
     try {
-        const response = await axios.get(url);
+        const response = await axios.get(`${BACKEND_PORT}/count?url=${url}`);
         return response.data;
     } catch (error) {
         const axiosError = error as AxiosError;
         return axiosError.message;
     }
 };
+
+export default getWordCount;

@@ -3,11 +3,11 @@ import {
     FETCH_WORD_COUNT_SUCCESS,
     FETCH_WORD_COUNT_FAILURE,
     SET_WORD_COUNT_PROPERTY,
-} from "../../actions/wordCount/actionTypes";
+} from '../../actions/wordCount/actionTypes';
 import {
     WordCountActions,
     WordCountState,
-} from "../../actions/wordCount/types";
+} from '../../actions/wordCount/types';
 
 export const initialState: WordCountState = {
     pending: false,
@@ -15,7 +15,9 @@ export const initialState: WordCountState = {
     wordCountsInfo: [],
 };
 
+// eslint-disable-next-line @typescript-eslint/default-param-last
 export const wordCountReducer = (state = initialState, action: WordCountActions) => {
+    // NOTE: check above
     switch (action.type) {
         case FETCH_WORD_COUNT_REQUEST:
             return {

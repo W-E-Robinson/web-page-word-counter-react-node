@@ -1,24 +1,24 @@
-import React, { memo } from "react";
+import React, { memo } from 'react'; // NOTE: react import needed?
 
-import { Alert as MUIAlert } from "@mui/material";
-import { AlertProps } from "./types";
+import { Alert as MUIAlert } from '@mui/material';
+import { AlertProps } from './types';
 
-import "./styles.sass";
+import './styles.sass';
 
-export const Alert = memo(({
+const Alert = memo(({
     id,
     severity,
     onClose,
     message,
-}: AlertProps) => {
-    return (
-        <MUIAlert
-            className="alert"
-            id={id}
-            severity={severity}
-            onClose={onClose}
-        >
-            {message}
-        </MUIAlert>
-    );
-});
+}: AlertProps) => (
+    <MUIAlert
+        className="alert"
+        id={id}
+        severity={severity}
+        onClose={onClose}
+    >
+        {message}
+    </MUIAlert>
+));
+
+export default Alert;

@@ -1,7 +1,7 @@
-import { Dispatch } from "react";
-import { FetchWordCountRequest, WebPageInfo, Word } from "../../modules/Redux/actions/wordCount/types";
-import { ButtonComponentProps, TextFieldComponentProps } from "../../molecules/Form/types";
-import { AccordionContent } from "../../organisms/Accordion/types";
+import { Dispatch } from 'react';
+import { FetchWordCountRequest, WebPageInfo, Word } from '../../modules/Redux/actions/wordCount/types';
+import { ButtonComponentProps, TextFieldComponentProps } from '../../molecules/Form/types';
+import { AccordionContent } from '../../organisms/Accordion/types';
 
 export type FormMapping = (
     url: string,

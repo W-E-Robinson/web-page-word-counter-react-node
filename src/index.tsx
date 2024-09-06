@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react';
 
-import { Provider } from "react-redux";
-import ReactDOM from "react-dom/client";
+import { Provider } from 'react-redux';
+import ReactDOM from 'react-dom/client';
 
-import { App } from "./App";
-import reportWebVitals from "./reportWebVitals";
-import { configureStore } from "./modules/Redux/store";
-import { ErrorBoundary } from "./modules/ErrorBoundary";
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import configureStore from './modules/Redux/store';
+import ErrorBoundary from './modules/ErrorBoundary';
 
-import "./index.sass";
+import './index.sass';
 
 const store = configureStore();
 
 const root = ReactDOM.createRoot(
-    document.getElementById("root") as HTMLElement,
+    document.getElementById('root') as HTMLElement,
 );
 
 root.render(

@@ -1,20 +1,20 @@
-import React from "react";
+import React from 'react';
 
-import { render, screen } from "@testing-library/react";
+import { render, screen } from '@testing-library/react';
 
-import { Alert } from "../index";
+import { Alert } from '../index';
 
-describe("Alert testing", () => {
+describe('Alert testing', () => {
     const mockOnClose = jest.fn();
 
     const mockProps = {
-        id: "mock id",
-        message: "mock message",
-        severity: "success" as const,
+        id: 'mock id',
+        message: 'mock message',
+        severity: 'success' as const,
         onClose: mockOnClose,
     };
 
-    test("message rendering", () => {
+    test('message rendering', () => {
         render(<Alert
             id={mockProps.id}
             severity={mockProps.severity}
@@ -22,6 +22,6 @@ describe("Alert testing", () => {
             onClose={mockProps.onClose}
         />);
 
-        expect(screen.getByText("mock message")).toBeInTheDocument();
+        expect(screen.getByText('mock message')).toBeInTheDocument();
     });
 });
