@@ -1,10 +1,11 @@
 {
-    "name": "web-page-word-counter-frontend",
+    "name": "web-page-word-counter-react",
     "version": "0.1.0",
     "private": true,
     "scripts": {
         "start": "./node_modules/.bin/react-scripts start",
         "build": "react-scripts build",
+        "docker:build": "docker build --pull --no-cache -t web-page-word-counter-react .",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "lint": "eslint .",

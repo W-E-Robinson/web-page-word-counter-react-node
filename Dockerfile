@@ -1,15 +1,17 @@
-FROM node:14-alpine
+FROM node:22-alpine
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY ./package.json ./package-lock.json ./
 
-RUN npm install
+RUN npm i
 
-COPY . .
+COPY ./public ./public
+COPY ./src ./src
+COPY ./tsconfig.json ./
 
 RUN npm run build
 
-EXPOSE 3001
+EXPOSE 3000
 
 CMD ["npm", "start"]
