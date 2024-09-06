@@ -6,7 +6,7 @@ import { TextFieldProps } from './types';
 
 import './styles.sass';
 
-export const TextField = memo(({
+const TextField = memo(({
     id,
     value,
     label,
@@ -32,3 +32,5 @@ export const TextField = memo(({
         />
     );
 });
+
+export default TextField;

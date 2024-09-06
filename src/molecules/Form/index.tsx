@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { Button } from '../../atoms/Button/index';
-import { TextField } from '../../atoms/TextField/index';
+import Button from '../../atoms/Button/index';
+import TextField from '../../atoms/TextField/index';
 import { FormProps } from './types';
 
 import styles from './styles.module.sass';
 
-export const Form = ({
+const Form = ({
     fields,
     id,
 }: FormProps) => (
@@ -42,3 +42,5 @@ export const Form = ({
         })}
     </div>
 );
+
+export default Form;

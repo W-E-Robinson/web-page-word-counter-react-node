@@ -10,7 +10,7 @@ import { AccordionProps } from './types';
 
 import './styles.sass';
 
-export const Accordion = memo(({ accordionContent }: AccordionProps) => (
+const Accordion = memo(({ accordionContent }: AccordionProps) => (
     <>
         {accordionContent.map((content) => (
             <MUIAccordion
@@ -31,3 +31,5 @@ export const Accordion = memo(({ accordionContent }: AccordionProps) => (
         ))}
     </>
 ));
+
+export default Accordion;

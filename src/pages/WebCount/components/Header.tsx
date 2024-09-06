@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 
 import styles from '../styles.module.sass';
 
-export const Header = () => (
+const Header = () => (
     <div>
         <div className={styles.header}>
             <Typography variant="h4">Web Page Word Counter</Typography>
@@ -12,3 +12,5 @@ export const Header = () => (
         </div>
     </div>
 );
+
+export default Header;

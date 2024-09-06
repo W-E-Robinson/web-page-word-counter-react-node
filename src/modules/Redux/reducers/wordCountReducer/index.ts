@@ -15,7 +15,9 @@ export const initialState: WordCountState = {
     wordCountsInfo: [],
 };
 
+// eslint-disable-next-line @typescript-eslint/default-param-last
 export const wordCountReducer = (state = initialState, action: WordCountActions) => {
+    // NOTE: check above
     switch (action.type) {
         case FETCH_WORD_COUNT_REQUEST:
             return {

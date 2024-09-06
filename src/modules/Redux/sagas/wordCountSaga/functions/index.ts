@@ -1,6 +1,9 @@
 import { HasUrlBeenSearched } from './types';
 
-export const hasUrlBeenSearched: HasUrlBeenSearched = (webPageUrls, targetUrl) => {
+const hasUrlBeenSearched: HasUrlBeenSearched = (webPageUrls, targetUrl) => {
+    // NOTE: needs to be separate function?
     if (webPageUrls.includes(targetUrl)) return true;
     return false;
 };
+
+export default hasUrlBeenSearched;

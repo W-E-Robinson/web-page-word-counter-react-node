@@ -6,7 +6,7 @@ import { ButtonProps } from './types';
 
 import './styles.sass';
 
-export const Button = memo(({
+const Button = memo(({
     id,
     label,
     variant,
@@ -24,4 +24,7 @@ export const Button = memo(({
     >
         {label}
     </MUIButton>
+
 ));
+
+export default Button;

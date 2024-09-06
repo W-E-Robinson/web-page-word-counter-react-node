@@ -8,8 +8,8 @@ import {
     fetchWordCountFailure,
 } from '../../actions/wordCount/actions';
 import { FETCH_WORD_COUNT_REQUEST } from '../../actions/wordCount/actionTypes';
-import { getWordCount } from '../../apis/wordCount';
-import { hasUrlBeenSearched } from './functions/index';
+import getWordCount from '../../apis/wordCount';
+import hasUrlBeenSearched from './functions/index';
 
 export function* fetchWordCountSaga(action: FetchWordCountRequest) {
     try {
@@ -36,8 +36,10 @@ export function* fetchWordCountSaga(action: FetchWordCountRequest) {
     }
 }
 
-export default function* wordCountSaga() {
+function* wordCountSaga() {
     yield all([
         takeEvery(FETCH_WORD_COUNT_REQUEST, fetchWordCountSaga),
     ]);
 }
+
+export default wordCountSaga;

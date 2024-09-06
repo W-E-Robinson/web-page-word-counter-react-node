@@ -11,7 +11,7 @@ import Paper from '@mui/material/Paper';
 
 import { TableProps } from './types';
 
-export const Table = memo(({
+const Table = memo(({
     headers,
     rows,
     caption,
@@ -59,3 +59,5 @@ export const Table = memo(({
         </TableContainer>
     );
 });
+
+export default Table;

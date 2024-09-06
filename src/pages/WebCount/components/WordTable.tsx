@@ -1,10 +1,10 @@
 import React, { memo } from 'react';
 
-import { Table } from '../../../molecules/Table';
+import Table from '../../../molecules/Table';
 
 import { WordTableProps } from '../types';
 
-export const WordTable = memo(({
+const WordTable = memo(({
     destructuredWordCount,
     url,
 }: WordTableProps) => (
@@ -14,3 +14,5 @@ export const WordTable = memo(({
         caption={`A table to show the frequency of words for the given URL: ${url}`}
     />
 ));
+
+export default WordTable;

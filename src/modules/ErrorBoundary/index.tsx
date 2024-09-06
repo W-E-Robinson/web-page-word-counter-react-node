@@ -1,4 +1,4 @@
-import React, { Component, ErrorInfo } from 'react';
+import React, { Component } from 'react';
 
 import Typography from '@mui/material/Typography';
 
@@ -6,17 +6,13 @@ import { State, Props } from './types';
 
 import './styles.sass';
 
-export class ErrorBoundary extends Component<Props, State> {
+class ErrorBoundary extends Component<Props, State> { // NOTE: t
     public state: State = {
         hasError: false,
     };
 
-    public static getDerivedStateFromError(_: Error): State {
+    public static getDerivedStateFromError(): State {
         return { hasError: true };
-    }
-
-    public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-        console.error('Uncaught error:', error, errorInfo);
     }
 
     public render() {
@@ -31,3 +27,5 @@ export class ErrorBoundary extends Component<Props, State> {
         return this.props.children;
     }
 }
+
+export default ErrorBoundary;

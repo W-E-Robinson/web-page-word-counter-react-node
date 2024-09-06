@@ -1,7 +1,7 @@
 import { fetchWordCountRequest } from '../../../modules/Redux/actions/wordCount/actions';
 import { FormMapping } from '../types';
 
-export const formMapping: FormMapping = (url, setUrl, reduxDispatch, searchedUrls) => [
+const formMapping: FormMapping = (url, setUrl, reduxDispatch, searchedUrls) => [
     {
         component: 'TEXT_FIELD' as const,
         id: 'text-field-url-input',
@@ -31,3 +31,5 @@ export const formMapping: FormMapping = (url, setUrl, reduxDispatch, searchedUrl
         },
     },
 ];
+
+export default formMapping;

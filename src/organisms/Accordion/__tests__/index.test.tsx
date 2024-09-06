@@ -3,8 +3,8 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { Accordion } from '../index';
-import { Table } from '../../../molecules/Table/index';
+import Accordion from '../index';
+import Table from '../../../molecules/Table/index';
 
 describe('Accordion testing', () => {
     const mockRows = [
@@ -34,6 +34,7 @@ describe('Accordion testing', () => {
         expect(screen.getByText('Mock First Accordion Title')).toBeInTheDocument();
     });
     test('expandable data rendering', async () => {
+        // eslint-disable-next-line max-len
         const { getByText, findByText } = render(<Accordion accordionContent={mockAccordionContent} />);
 
         const firstAccordion = getByText('Mock First Accordion Title');
