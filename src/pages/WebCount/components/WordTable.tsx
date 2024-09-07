@@ -1,6 +1,6 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 
-import Table from '../../../molecules/Table';
+import Table from '../../../atomicComponents/molecules/Table';
 
 import { WordTableProps } from '../types';
 

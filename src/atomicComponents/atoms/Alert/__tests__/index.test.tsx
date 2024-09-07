@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { render, screen } from '@testing-library/react';
 
 import Alert from '../index';
@@ -14,7 +12,7 @@ describe('Alert testing', () => {
         onClose: mockOnClose,
     };
 
-    test('message rendering', () => {
+    it('should render the message', () => {
         render(<Alert
             id={mockProps.id}
             severity={mockProps.severity}

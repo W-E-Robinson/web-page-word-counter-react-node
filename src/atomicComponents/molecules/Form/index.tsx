@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Button from '../../atoms/Button/index';
 import TextField from '../../atoms/TextField/index';
 import { FormProps } from './types';

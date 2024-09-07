@@ -1,9 +1,15 @@
-import React, { memo } from 'react'; // NOTE: react import needed?
+import { memo } from 'react';
 
 import { Alert as MUIAlert } from '@mui/material';
-import { AlertProps } from './types';
 
 import './styles.sass';
+
+interface AlertProps {
+    id: string;
+    severity: 'success' | 'error';
+    onClose: () => any;
+    message: string;
+}
 
 const Alert = memo(({
     id,

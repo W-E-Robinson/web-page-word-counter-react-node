@@ -1,8 +1,6 @@
-import React from 'react';
-
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import TextField  from '../index';
+import TextField from '../index';
 
 describe('TextField testing', () => {
     const mockOnChange = jest.fn();
@@ -16,7 +14,7 @@ describe('TextField testing', () => {
         helperText: null,
     };
 
-    test('label rendering', () => {
+    it('should render the label', () => {
         render(<TextField
             id={mockProps.id}
             label={mockProps.label}
@@ -28,7 +26,7 @@ describe('TextField testing', () => {
 
         expect(screen.getAllByLabelText('mock label')[0]).toBeInTheDocument();
     });
-    test('onChange mock jest firing', () => {
+    it('should trigger the onChange mock function', () => {
         render(<TextField
             id={mockProps.id}
             label={mockProps.label}
@@ -39,10 +37,10 @@ describe('TextField testing', () => {
         />);
 
         const textField = screen.getAllByLabelText('mock label')[0];
-        fireEvent.change(textField, { target: { value: '1' } });
-        expect(mockOnChange).toHaveBeenCalledTimes(1);
+        fireEvent.change(textField, { target: { value: 't' } });
+        expect(mockOnChange).toHaveBeenCalledWith('t');
     });
-    test('error and helperText', () => {
+    it('render the helper text', () => {
         render(<TextField
             id={mockProps.id}
             label={mockProps.label}

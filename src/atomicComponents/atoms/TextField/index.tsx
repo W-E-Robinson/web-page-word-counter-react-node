@@ -1,10 +1,18 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 
 import { TextField as MUITextField } from '@mui/material';
 
-import { TextFieldProps } from './types';
-
 import './styles.sass';
+
+export interface TextFieldProps {
+    id: string;
+    value: string;
+    label: string;
+    onChange: (event: any) => any;
+    error?: boolean;
+    helperText?: string | null;
+    // width?: number; // NOTE: why here?
+}
 
 const TextField = memo(({
     id,

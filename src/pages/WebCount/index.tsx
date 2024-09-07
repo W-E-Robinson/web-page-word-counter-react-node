@@ -1,11 +1,11 @@
-import React, {
+import {
     Suspense, useState, useMemo, useCallback, useEffect, lazy,
 } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
 import { AppState } from '../../modules/Redux/reducers/rootReducer';
-import Form from '../../molecules/Form';
+import Form from '../../atomicComponents/molecules/Form';
 import formMapping from './functions';
 import Header from './components/Header';
 import { setWordCountProperty } from '../../modules/Redux/actions/wordCount/actions';
@@ -14,8 +14,8 @@ import styles from './styles.module.sass';
 import { FormatAccordionContent } from './types';
 import { WebPageInfo } from '../../modules/Redux/actions/wordCount/types';
 
-const Alert = lazy(() => import('../../atoms/Alert'));
-const Accordion = lazy(() => import('../../organisms/Accordion'));
+const Alert = lazy(() => import('../../atomicComponents/atoms/Alert'));
+const Accordion = lazy(() => import('../../atomicComponents/organisms/Accordion'));
 const WordTable = lazy(() => import('./components/WordTable'));
 
 const WordCount = () => {
@@ -32,7 +32,7 @@ const WordCount = () => {
     }, [error]);
 
     const searchedUrls = useMemo(
-        () => wordCountsInfo.map((wordCountInfo) => wordCountInfo.webPageUrl),
+        () => wordCountsInfo.map((wordCountInfo) => wordCountInfo.url),
         [wordCountsInfo],
     );
     const formFields = useMemo(
@@ -44,15 +44,15 @@ const WordCount = () => {
     const formatAccordionContent: FormatAccordionContent = useCallback((countInfo: WebPageInfo[]) => countInfo
         .map((info) => ({
             accordionSummary: {
-                id: info.webPageUrl,
-                title: `Word Count: ${info.totalWordCount}, URL: ${info.webPageUrl}`,
-                ariaControls: `${info.webPageUrl}-details`,
+                id: info.url,
+                title: `Word Count: ${info.wordCount}, URL: ${info.url}`,
+                ariaControls: `${info.url}-details`,
             },
             contentComponent:
                     <Suspense fallback={<></>}>
                         <WordTable
-                            destructuredWordCount={info.destructuredWordCount}
-                            url={info.webPageUrl}
+                            destructuredWordCount={info.wordsList}
+                            url={info.url}
                         />
                     </Suspense>,
         })), []);
