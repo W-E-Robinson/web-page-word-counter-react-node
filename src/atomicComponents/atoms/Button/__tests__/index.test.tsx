@@ -1,9 +1,7 @@
-import React from 'react';
-
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { Button } from '../index';
+import Button from '../index';
 
 describe('Button testing', () => {
     const mockOnClick = jest.fn();

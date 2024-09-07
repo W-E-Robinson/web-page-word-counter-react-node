@@ -6,15 +6,15 @@ import {
     SET_WORD_COUNT_PROPERTY,
 } from './actionTypes';
 
-export interface Word extends TableRowObjShape {
+export interface Word extends TableRowObjShape { // NOTE: eh?
     word: string;
     count: number;
 }
 
-export interface WebPageInfo {
-    webPageUrl: string;
-    totalWordCount: number;
-    destructuredWordCount: Word[];
+export interface WebPageInfo { // NOTE: where should all the typings in redux live? also d.ts?
+    url: string;
+    wordCount: number;
+    wordsList: Word[];
 }
 
 export interface WordCountState {

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
-import { Form } from '../index';
+import Form from '../index';
 
 describe('Form testing with text field and button', () => {
     const mockOnChange = jest.fn();

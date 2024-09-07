@@ -9,18 +9,21 @@ import {
 } from '../../actions/wordCount/actions';
 import { FETCH_WORD_COUNT_REQUEST } from '../../actions/wordCount/actionTypes';
 import getWordCount from '../../apis/wordCount';
-import hasUrlBeenSearched from './functions/index';
 
 export function* fetchWordCountSaga(action: FetchWordCountRequest) {
     try {
-        if (hasUrlBeenSearched(action.payload.searchedUrls, action.payload.webPageUrl)) { throw new Error('That URL has already been searched'); }
+        if (action.payload.searchedUrls.includes(action.payload.webPageUrl)) {
+            throw new Error('That URL has already been searched'); // NOTE: how is all error handling... handled?
+        }
 
         const response: WebPageInfo = yield call(
             getWordCount,
             action.payload.webPageUrl,
         );
 
-        if (typeof response === 'string') { throw new Error(response); }
+        if (typeof response === 'string') { // NOTE: eh?
+            throw new Error(response); // NOTE: to be fair why return from api to rethrow here?
+        }
 
         yield put(
             fetchWordCountSuccess({

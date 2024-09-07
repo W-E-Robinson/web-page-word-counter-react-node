@@ -2,7 +2,7 @@ import React from 'react';
 
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import { TextField } from '../index';
+import TextField  from '../index';
 
 describe('TextField testing', () => {
     const mockOnChange = jest.fn();

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
-import { Alert } from '../index';
+import Alert from '../index';
 
 describe('Alert testing', () => {
     const mockOnClose = jest.fn();

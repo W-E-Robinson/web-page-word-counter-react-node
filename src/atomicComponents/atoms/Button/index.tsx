@@ -1,10 +1,16 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 
 import { Button as MUIButton } from '@mui/material';
 
-import { ButtonProps } from './types';
-
 import './styles.sass';
+
+interface ButtonProps {
+    id: string;
+    label: string;
+    variant: 'contained' | 'outlined';
+    disabled?: boolean;
+    onClick: () => any;
+}
 
 const Button = memo(({
     id,

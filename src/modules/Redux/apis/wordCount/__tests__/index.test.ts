@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { getWordCount } from '../index';
+import getWordCount from '../index';
 
 jest.mock('axios', () => ({
     get: jest.fn(),

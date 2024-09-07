@@ -7,6 +7,7 @@ import rootSaga from '../sagas/rootSaga';
 const sagaMiddleware = createSagaMiddleware();
 
 const configureStore = () => {
+    // @ts-ignore = temporary ignore
     const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
     sagaMiddleware.run(rootSaga);
     return store;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import { Table } from '../index';
+import  Table  from '../index';
 
 describe('Table testing', () => {
     const mockProps = {

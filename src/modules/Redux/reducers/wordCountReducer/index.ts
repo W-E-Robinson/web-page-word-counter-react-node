@@ -11,10 +11,12 @@ import {
 
 export const initialState: WordCountState = {
     pending: false,
-    error: undefined,
+    error: null,
     wordCountsInfo: [],
 };
 
+// remove/solve below or Docker build will fail
+// eslint-disable-next-line
 export const wordCountReducer = (state = initialState, action: WordCountActions) => {
     // NOTE: check above
     switch (action.type) {
