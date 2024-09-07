@@ -14,7 +14,7 @@ describe('Button testing', () => {
         onClick: mockOnClick,
     };
 
-    test('label rendering', () => {
+    it('should render the label', () => {
         render(<Button
             id={mockProps.id}
             label={mockProps.label}
@@ -25,7 +25,7 @@ describe('Button testing', () => {
 
         expect(screen.getByText('mock label')).toBeInTheDocument();
     });
-    test('onClick function calling', () => {
+    it('should call the onClick mock function', () => {
         render(<Button
             id={mockProps.id}
             label={mockProps.label}
@@ -37,7 +37,7 @@ describe('Button testing', () => {
         userEvent.click(screen.getByText('mock label'));
         expect(mockOnClick).toHaveBeenCalledTimes(1);
     });
-    test('button is disabled', () => {
+    it('should render the button disabled when prop is given', () => {
         render(<Button
             id={mockProps.id}
             label={mockProps.label}
