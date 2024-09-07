@@ -5,13 +5,9 @@
         "start": "./node_modules/.bin/react-scripts start",
         "build": "react-scripts build",
         "docker:build": "docker build --pull --no-cache -t web-page-word-counter-react .",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
+        "test": "react-scripts test --coverage",
         "lint": "eslint .",
-        "lint:fix": "eslint --fix .",
-        "pretsc": "rimraf -g ./dist/*",
-        "tsc": "tsc -p tsconfig.build.json",
-        "posttsc": "need to copy in public?"
+        "lint:fix": "eslint --fix ."
     },
     "dependencies": {
         "@emotion/react": "^11.13.3",
