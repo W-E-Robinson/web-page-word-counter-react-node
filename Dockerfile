@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY ./package.json ./package-lock.json ./
 
-RUN npm i
+RUN npm i --omit=dev
 
 COPY ./public ./public
 COPY ./src ./src
