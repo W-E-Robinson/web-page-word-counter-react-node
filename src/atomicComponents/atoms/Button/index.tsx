@@ -4,7 +4,7 @@ import { Button as MUIButton } from '@mui/material';
 
 import './styles.sass';
 
-interface ButtonProps {
+export interface ButtonProps {
     id: string;
     label: string;
     variant: 'contained' | 'outlined';

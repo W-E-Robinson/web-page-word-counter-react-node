@@ -1,7 +1,16 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
 import BACKEND_PORT from '../../../../constants/endpoints';
-import { WebPageInfo } from '../../actions/wordCount/types';
+import { type WebPageInfo } from '../../actions/wordCount/actions';
+
+export class APIError extends Error {
+    status: number;
+
+    constructor(message: string, status: number) {
+        super(message);
+        this.status = status;
+    }
+}
 
 const getWordCount = async (
     url: string,
@@ -10,10 +19,10 @@ const getWordCount = async (
         const response: AxiosResponse = await axios.get(`${BACKEND_PORT}/count?url=${url}`);
         return response.data;
     } catch (error) {
-        return {
-            message: (error as AxiosError)?.message ?? 'Unknown error',
-            status: (error as AxiosError)?.status ?? 500,
-        };
+        throw new APIError(
+            (error as AxiosError)?.message ?? 'Unknown error',
+            (error as AxiosError)?.status ?? 500,
+        );
     }
 };
 

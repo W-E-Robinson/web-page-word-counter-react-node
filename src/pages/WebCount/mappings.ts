@@ -1,5 +1,14 @@
-import { fetchWordCountRequest } from '../../../modules/Redux/actions/wordCount/actions';
-import { FormMapping } from '../types';
+import { type SetStateAction, type Dispatch } from 'react';
+
+import { type FetchWordCountRequest, fetchWordCountRequest } from '../../modules/Redux/actions/wordCount/actions';
+import { type ButtonComponentProps, type TextFieldComponentProps } from '../../atomicComponents/molecules/Form';
+
+type FormMapping = (
+    url: string,
+    setUrl: Dispatch<SetStateAction<string>>,
+    reduxDispatch: Dispatch<FetchWordCountRequest>,
+    searchedUrls: string[],
+) => (ButtonComponentProps | TextFieldComponentProps)[];
 
 const formMapping: FormMapping = (url, setUrl, reduxDispatch, searchedUrls) => [
     {
@@ -26,7 +35,7 @@ const formMapping: FormMapping = (url, setUrl, reduxDispatch, searchedUrls) => [
         variant: 'contained' as const,
         disabled: !url.length,
         onClick: () => {
-            reduxDispatch(fetchWordCountRequest({ searchedUrls, webPageUrl: url }));
+            reduxDispatch(fetchWordCountRequest({ searchedUrls, url }));
             setUrl('');
         },
     },

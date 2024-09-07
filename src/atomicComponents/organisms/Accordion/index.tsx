@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { ReactNode, memo } from 'react';
 
 import { Accordion as MUIAccordion } from '@mui/material';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -6,14 +6,25 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-import { AccordionProps } from './types';
-
 import './styles.sass';
+
+export interface AccordionContent {
+    accordionSummary: {
+        id: string;
+        title: string;
+        ariaControls: string;
+    }
+    contentComponent: ReactNode;
+}
+export interface AccordionProps {
+    accordionContent: AccordionContent[];
+}
 
 const Accordion = memo(({ accordionContent }: AccordionProps) => (
     <>
         {accordionContent.map((content) => (
             <MUIAccordion
+                key={content.accordionSummary.id}
                 className="accordion-organism"
                 TransitionProps={{ unmountOnExit: true }}
             >

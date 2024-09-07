@@ -1,15 +1,13 @@
-import React from 'react';
-
 import { render, screen } from '@testing-library/react';
 
-import { ErrorBoundary } from '../index';
+import ErrorBoundary from '../index';
 
 describe('ErrorBoundary testing', () => {
     const Child = () => {
         throw new Error();
     };
 
-    test('Error text renders on component tree error', () => {
+    it('should render the error message when there is a component tree error', () => {
         render(
             <ErrorBoundary>
                 <Child />

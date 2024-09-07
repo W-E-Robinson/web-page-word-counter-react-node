@@ -1,12 +1,27 @@
 import Button from '../../atoms/Button/index';
 import TextField from '../../atoms/TextField/index';
-import { FormProps } from './types';
 
 import styles from './styles.module.sass';
 
+import { type ButtonProps } from '../../atoms/Button';
+import { type TextFieldProps } from '../../atoms/TextField';
+
+export interface TextFieldComponentProps extends TextFieldProps {
+    component: 'TEXT_FIELD';
+}
+export interface ButtonComponentProps extends ButtonProps {
+    component: 'BUTTON';
+}
+interface FormProps {
+    id: string;
+    fields: (ButtonComponentProps | TextFieldComponentProps)[];
+}
+
+// NOTE: what is this? = <div key={field.id} className={styles[`${index ? 'field' : ''}`]}>
+// NOTE: fix all styling
 const Form = ({
-    fields,
     id,
+    fields,
 }: FormProps) => (
     <div className={styles.container} aria-label={id}>
         {fields.map((field, index) => {

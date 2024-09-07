@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -11,7 +9,6 @@ describe('Accordion testing', () => {
         { word: 'to', count: 13 },
         { word: 'and', count: 12 },
     ];
-
     const mockAccordionContent = [
         {
             accordionSummary: {
@@ -28,12 +25,13 @@ describe('Accordion testing', () => {
         },
     ];
 
-    test('accordion title information rendering', () => {
+    it('should render the accordion title information', () => {
         render(<Accordion accordionContent={mockAccordionContent} />);
 
         expect(screen.getByText('Mock First Accordion Title')).toBeInTheDocument();
     });
-    test('expandable data rendering', async () => {
+
+    it('should render the expandable data', async () => {
         // eslint-disable-next-line max-len
         const { getByText, findByText } = render(<Accordion accordionContent={mockAccordionContent} />);
 

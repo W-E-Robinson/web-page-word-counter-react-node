@@ -1,8 +1,6 @@
-import React from 'react';
-
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import  Table  from '../index';
+import Table from '../index';
 
 describe('Table testing', () => {
     const mockProps = {
@@ -24,7 +22,7 @@ describe('Table testing', () => {
         caption: 'mock caption',
     };
 
-    test('headers rendering', () => {
+    it('should render the headers', () => {
         render(<Table
             headers={mockProps.headers}
             rows={mockProps.rows}
@@ -34,7 +32,8 @@ describe('Table testing', () => {
         expect(screen.getByText('Word')).toBeInTheDocument();
         expect(screen.getByText('Count')).toBeInTheDocument();
     });
-    test('rows rendering', () => {
+
+    it('should render the rows on the first page', () => {
         render(<Table
             headers={mockProps.headers}
             rows={mockProps.rows}
@@ -52,7 +51,8 @@ describe('Table testing', () => {
         expect(screen.getByText('fifth')).toBeInTheDocument();
         expect(screen.getByText(90)).toBeInTheDocument();
     });
-    test('pagination', async () => {
+
+    it('should render the rows on the second page (pagination)', async () => {
         render(<Table
             headers={mockProps.headers}
             rows={mockProps.rows}

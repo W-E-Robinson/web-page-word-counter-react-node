@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { render, screen } from '@testing-library/react';
 
 import Form from '../index';
@@ -28,7 +26,7 @@ describe('Form testing with text field and button', () => {
         },
     ];
 
-    test('Form fields rendering', () => {
+    it('should render all the fields', () => {
         render(<Form fields={mockFields} id="mock-id" />);
 
         expect(screen.getAllByLabelText('text field mock label')[0]).toBeInTheDocument();

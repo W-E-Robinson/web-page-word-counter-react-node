@@ -8,7 +8,7 @@ module.exports = {
     plugins: ['jest', 'import', '@typescript-eslint'],
     parser: '@typescript-eslint/parser',
     extends: ['airbnb-base', 'airbnb-typescript/base'],
-    ignorePatterns: ['dist/*', '.eslintrc.js'],
+    ignorePatterns: ['dist/*', '.eslintrc.js', 'coverage/*'],
     parserOptions: {
         project: './tsconfig.json',
         tsconfigRootDir: __dirname,
@@ -22,6 +22,7 @@ module.exports = {
         'no-await-in-loop': [0],
         'no-process-env': [2],
         '@typescript-eslint/indent': [2, 4],
+        '@typescript-eslint/default-param-last': [0],
     },
     overrides: [
         {
