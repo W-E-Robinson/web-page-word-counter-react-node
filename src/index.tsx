@@ -1,4 +1,4 @@
-import React from 'react';
+import { StrictMode } from 'react';
 
 import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom/client';
@@ -17,13 +17,13 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-    <React.StrictMode>
+    <StrictMode>
         <ErrorBoundary>
             <Provider store={store}>
                 <App />
             </Provider>
         </ErrorBoundary>
-    </React.StrictMode>,
+    </StrictMode>,
 );
 
 reportWebVitals();
