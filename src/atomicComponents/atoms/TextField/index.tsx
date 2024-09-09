@@ -11,7 +11,6 @@ export interface TextFieldProps {
     onChange: (event: any) => any;
     error?: boolean;
     helperText?: string | null;
-    // width?: number; // NOTE: why here?
 }
 
 const TextField = memo(({

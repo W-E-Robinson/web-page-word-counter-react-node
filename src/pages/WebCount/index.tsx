@@ -71,8 +71,8 @@ const WordCount = () => {
                     <div className={styles.alert} aria-live="polite">
                         <Alert
                             id="alert"
-                            severity={error === null ? 'success' : 'error'}
-                            message={error === null ? 'Request Successful!' : error as string}
+                            severity={'error'}
+                            message={error as string}
                             onClose={() => {
                                 setShowAlert(false);
                                 reduxDispatch(setWordCountStateProperty({ error: null }));
