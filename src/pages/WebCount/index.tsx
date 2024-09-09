@@ -1,38 +1,43 @@
-import React, {
+import {
     Suspense, useState, useMemo, useCallback, useEffect, lazy,
 } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
 
+import { AccordionContent } from '../../atomicComponents/organisms/Accordion';
 import { AppState } from '../../modules/Redux/reducers/rootReducer';
-import Form from '../../molecules/Form';
-import formMapping from './functions';
+import Form from '../../atomicComponents/molecules/Form';
+import formMapping from './mappings';
 import Header from './components/Header';
-import { setWordCountProperty } from '../../modules/Redux/actions/wordCount/actions';
+import {
+    setWordCountStateProperty, type WebPageInfo,
+} from '../../modules/Redux/actions/wordCount/actions';
 
 import styles from './styles.module.sass';
-import { FormatAccordionContent } from './types';
-import { WebPageInfo } from '../../modules/Redux/actions/wordCount/types';
 
-const Alert = lazy(() => import('../../atoms/Alert'));
-const Accordion = lazy(() => import('../../organisms/Accordion'));
+const Alert = lazy(() => import('../../atomicComponents/atoms/Alert'));
+const Accordion = lazy(() => import('../../atomicComponents/organisms/Accordion'));
 const WordTable = lazy(() => import('./components/WordTable'));
+
+type FormatAccordionContent = (
+    wordCountsInfo: WebPageInfo[],
+) => AccordionContent[];
 
 const WordCount = () => {
     const reduxDispatch = useDispatch();
 
-    const [url, setUrl] = useState('');
-    const [showAlert, setShowAlert] = useState(false);
+    const [url, setUrl] = useState<string>('');
+    const [showAlert, setShowAlert] = useState<boolean>(false);
 
     const { error, wordCountsInfo } = useSelector((state: AppState) => state.wordCounts);
 
     useEffect(() => {
-        if (error === null || typeof error === 'string') { setShowAlert(true); }
-        // NOTE: what now?
+        if (typeof error === 'string') { // NOTE: check this behaviour, why a null in here before?
+            setShowAlert(true);
+        }
     }, [error]);
 
     const searchedUrls = useMemo(
-        () => wordCountsInfo.map((wordCountInfo) => wordCountInfo.webPageUrl),
+        () => wordCountsInfo.map((wordCountInfo) => wordCountInfo.url),
         [wordCountsInfo],
     );
     const formFields = useMemo(
@@ -44,17 +49,17 @@ const WordCount = () => {
     const formatAccordionContent: FormatAccordionContent = useCallback((countInfo: WebPageInfo[]) => countInfo
         .map((info) => ({
             accordionSummary: {
-                id: info.webPageUrl,
-                title: `Word Count: ${info.totalWordCount}, URL: ${info.webPageUrl}`,
-                ariaControls: `${info.webPageUrl}-details`,
+                id: info.url,
+                title: `Word Count: ${info.wordCount}, URL: ${info.url}`,
+                ariaControls: `${info.url}-details`,
             },
             contentComponent:
-                    <Suspense fallback={<></>}>
-                        <WordTable
-                            destructuredWordCount={info.destructuredWordCount}
-                            url={info.webPageUrl}
-                        />
-                    </Suspense>,
+                <Suspense fallback={<></>}>
+                    <WordTable
+                        wordsList={info.wordsList}
+                        url={info.url}
+                    />
+                </Suspense>,
         })), []);
 
     return (
@@ -66,11 +71,11 @@ const WordCount = () => {
                     <div className={styles.alert} aria-live="polite">
                         <Alert
                             id="alert"
-                            severity={error === null ? 'success' : 'error'}
-                            message={error === null ? 'Request Successful!' : error as string}
+                            severity={'error'}
+                            message={error as string}
                             onClose={() => {
                                 setShowAlert(false);
-                                reduxDispatch(setWordCountProperty({ error: undefined }));
+                                reduxDispatch(setWordCountStateProperty({ error: null }));
                             }}
                         />
                     </div>

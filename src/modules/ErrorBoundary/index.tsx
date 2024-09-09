@@ -1,12 +1,17 @@
-import React, { Component } from 'react';
+import { ReactNode, Component } from 'react';
 
 import Typography from '@mui/material/Typography';
 
-import { State, Props } from './types';
-
 import './styles.sass';
 
-class ErrorBoundary extends Component<Props, State> { // NOTE: t
+export interface Props {
+    children?: ReactNode;
+}
+export interface State {
+    hasError: boolean;
+}
+
+class ErrorBoundary extends Component<Props, State> {
     public state: State = {
         hasError: false,
     };

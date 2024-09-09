@@ -1,94 +1,96 @@
-import { call, put, take } from 'redux-saga/effects';
-import { expectSaga } from 'redux-saga-test-plan';
+import { call, put } from 'redux-saga/effects';
 
-import { FETCH_WORD_COUNT_REQUEST } from '../../../actions/wordCount/actionTypes';
 import { fetchWordCountSaga } from '../index';
 import {
+    FETCH_WORD_COUNT_REQUEST,
     fetchWordCountSuccess,
     fetchWordCountFailure,
+    type FetchWordCountRequest,
+    type WebPageInfo,
 } from '../../../actions/wordCount/actions';
-import { getWordCount } from '../../../apis/wordCount';
-import { FetchWordCountRequest, WebPageInfo } from '../../../actions/wordCount/types';
-import { Api } from './types';
+import getWordCount, { APIError } from '../../../apis/wordCount';
+
+jest.mock('../../../apis/wordCount', () => {
+    const actualModule = jest.requireActual('../../../apis/wordCount');
+
+    return {
+        __esModule: true,
+        default: jest.fn(),
+        ...actualModule,
+    };
+});
 
 describe('fetchWordCountSaga testing', () => {
-    const mockWebPageInfo = {
-        webPageUrl: 'mock url',
-        totalWordCount: 10,
-        destructuredWordCount: [
-            { word: 'the', count: 100 },
-            { word: 'and', count: 90 },
-            { word: 'umbrella', count: 2 },
-        ],
-    };
-
-    function* mockSaga(api: Api) {
-        const action: FetchWordCountRequest = yield take(FETCH_WORD_COUNT_REQUEST);
-        // @ts-ignore
-        const response: WebPageInfo = yield call(api.getWordCount, action.payload);
-
-        yield put({
-            type: FETCH_WORD_COUNT_REQUEST,
-            payload: response,
-        });
-    }
-
-    const mockAction = {
-        type: FETCH_WORD_COUNT_REQUEST,
-        payload: {
-            searchedUrls: ['mock searched url'],
-            webPageUrl: 'mock url',
-        },
-    };
-
-    test('mockSaga', () => {
-        const api = {
-            getWordCount: (resource: string) => ({ resource }),
-        };
-
-        // @ts-ignore
-        return expectSaga(mockSaga, api)
-            .put({
-                type: FETCH_WORD_COUNT_REQUEST,
-                payload: { resource: 'mockResource' },
-            })
-            .dispatch({
-                type: FETCH_WORD_COUNT_REQUEST,
-                payload: 'mockResource',
-            })
-            .run();
+    afterAll(() => {
+        jest.restoreAllMocks();
     });
 
-    test('successful response', () => {
-        const response = mockWebPageInfo;
+    it('should generate an error when the url has already been searched', () => {
+        const mockAction: FetchWordCountRequest = {
+            type: FETCH_WORD_COUNT_REQUEST,
+            payload: {
+                searchedUrls: ['mock url'],
+                url: 'mock url',
+            },
+        };
 
-        const generator = fetchWordCountSaga(mockAction as FetchWordCountRequest);
+        const generator = fetchWordCountSaga(mockAction);
 
-        expect(generator.next().value).toEqual(call(
-            getWordCount,
-            mockAction.payload.webPageUrl,
-        ));
-        expect(generator.next(response).value).toEqual(put(
-            fetchWordCountSuccess({
-                webPageInfo: mockWebPageInfo,
+        expect(generator.next().value).toEqual(put(
+            fetchWordCountFailure({
+                error: 'That URL has already been searched',
             }),
         ));
     });
 
-    test('error response', () => {
-        const response = {
-            message: 'mock error',
+    it('should generate an error when there is an axios error', () => {
+        // @ts-ignore - ignoring full typing for a simple mock
+        getWordCount.mockResolvedValueOnce(new APIError('test message', 500));
+
+        const mockAction: FetchWordCountRequest = {
+            type: FETCH_WORD_COUNT_REQUEST,
+            payload: {
+                searchedUrls: ['mock searched url'],
+                url: 'mock url',
+            },
         };
 
-        const generator = fetchWordCountSaga(mockAction as FetchWordCountRequest);
+        const generator = fetchWordCountSaga(mockAction);
 
         expect(generator.next().value).toEqual(call(
             getWordCount,
-            mockAction.payload.webPageUrl,
+            mockAction.payload.url,
         ));
-        expect(generator.throw(response).value).toEqual(put(
+        expect(generator.next().value).toEqual(put(
             fetchWordCountFailure({
-                error: response.message,
+                error: '500: test message',
+            }),
+        ));
+    });
+
+    it('should generate a successful repsonse', () => {
+        const mockAction: FetchWordCountRequest = {
+            type: FETCH_WORD_COUNT_REQUEST,
+            payload: {
+                searchedUrls: ['mock searched url'],
+                url: 'mock url',
+            },
+        };
+        const mockData: WebPageInfo = {
+            url: 'mockUrl', wordCount: 1, wordsList: [{ word: 'test', count: 1 }],
+        };
+        // @ts-ignore - ignoring full typing for a simple mock
+        getWordCount.mockResolvedValueOnce(mockData);
+
+        const generator = fetchWordCountSaga(mockAction);
+
+        expect(generator.next().value).toEqual(call(
+            getWordCount,
+            mockAction.payload.url,
+        ));
+        expect(generator.next().value).toEqual(put(
+            fetchWordCountSuccess({
+                webPageInfo: mockData,
             }),
         ));
     });

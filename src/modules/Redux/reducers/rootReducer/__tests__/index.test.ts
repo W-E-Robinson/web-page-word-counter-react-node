@@ -1,14 +1,14 @@
 import { createStore } from 'redux';
 
-import { rootReducer } from '../index';
+import rootReducer from '../index';
 
 describe('rootReducer testing', () => {
-    test('check reducer initial states', () => {
+    it('should have all initial reducer states', () => {
         const store = createStore(rootReducer);
 
         expect(store.getState().wordCounts).toEqual({
             pending: false,
-            error: undefined,
+            error: null,
             wordCountsInfo: [],
         });
     });

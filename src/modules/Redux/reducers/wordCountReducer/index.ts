@@ -3,20 +3,17 @@ import {
     FETCH_WORD_COUNT_SUCCESS,
     FETCH_WORD_COUNT_FAILURE,
     SET_WORD_COUNT_PROPERTY,
-} from '../../actions/wordCount/actionTypes';
-import {
-    WordCountActions,
-    WordCountState,
-} from '../../actions/wordCount/types';
+    type WordCountActions,
+    type WordCountState,
+} from '../../actions/wordCount/actions';
 
 export const initialState: WordCountState = {
     pending: false,
-    error: undefined,
+    error: null,
     wordCountsInfo: [],
 };
 
 export const wordCountReducer = (state = initialState, action: WordCountActions) => {
-    // NOTE: check above
     switch (action.type) {
         case FETCH_WORD_COUNT_REQUEST:
             return {

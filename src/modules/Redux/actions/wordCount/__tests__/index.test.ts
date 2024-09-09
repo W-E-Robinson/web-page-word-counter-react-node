@@ -2,25 +2,27 @@ import {
     fetchWordCountRequest,
     fetchWordCountFailure,
     fetchWordCountSuccess,
-    setWordCountProperty,
+    setWordCountStateProperty,
 } from '../actions';
 
 describe('Actions - GET /wordCount', () => {
-    test('fetchWordCountRequest', () => {
+    it('should be of the correct type for fetchWordCountRequest', () => {
         expect(fetchWordCountRequest({
             searchedUrls: ['mock searched url'],
-            webPageUrl: 'mock url',
+            url: 'mock url',
         }).type).toBe('FETCH_WORD_COUNT_REQUEST');
     });
-    test('fetchWordCountFailure', () => {
+
+    it('should be of the correct type for fetchWordCountFailure', () => {
         expect(fetchWordCountFailure({ error: 'mock error' }).type).toBe('FETCH_WORD_COUNT_FAILURE');
     });
-    test('fetchWordCountSuccess', () => {
+
+    it('should be of the correct type for fetchWordCountSuccess', () => {
         expect(fetchWordCountSuccess({
             webPageInfo: {
-                webPageUrl: 'mock url',
-                totalWordCount: 10,
-                destructuredWordCount: [
+                url: 'mock url',
+                wordCount: 10,
+                wordsList: [
                     { word: 'the', count: 100 },
                     { word: 'and', count: 90 },
                     { word: 'umbrella', count: 2 },
@@ -28,7 +30,8 @@ describe('Actions - GET /wordCount', () => {
             },
         }).type).toBe('FETCH_WORD_COUNT_SUCCESS');
     });
-    test('setWordCountProperty ', () => {
-        expect(setWordCountProperty({ error: null }).type).toBe('SET_WORD_COUNT_PROPERTY');
+
+    it('should be of the correct type for setWordCountStateProperty ', () => {
+        expect(setWordCountStateProperty({ error: null }).type).toBe('SET_WORD_COUNT_PROPERTY');
     });
 });

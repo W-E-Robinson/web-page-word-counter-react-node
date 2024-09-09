@@ -1,16 +1,19 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 
-import Table from '../../../molecules/Table';
+import Table, { type TableRowObjShape } from '../../../atomicComponents/molecules/Table';
+import { type Word } from '../../../modules/Redux/actions/wordCount/actions';
 
-import { WordTableProps } from '../types';
-
+interface WordTableProps {
+    wordsList: Word[];
+    url: string;
+}
 const WordTable = memo(({
-    destructuredWordCount,
+    wordsList,
     url,
 }: WordTableProps) => (
     <Table
         headers={['Word', 'Count']}
-        rows={destructuredWordCount}
+        rows={(wordsList as unknown as TableRowObjShape[])}
         caption={`A table to show the frequency of words for the given URL: ${url}`}
     />
 ));
