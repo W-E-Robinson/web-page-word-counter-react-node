@@ -3,7 +3,7 @@ import {
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { AccordionContent } from '../../atomicComponents/organisms/Accordion';
+import { type AccordionContent } from '../../atomicComponents/organisms/Accordion';
 import { AppState } from '../../modules/Redux/reducers/rootReducer';
 import Form from '../../atomicComponents/molecules/Form';
 import formMapping from './mappings';
@@ -31,7 +31,7 @@ const WordCount = () => {
     const { error, wordCountsInfo } = useSelector((state: AppState) => state.wordCounts);
 
     useEffect(() => {
-        if (typeof error === 'string') { // NOTE: check this behaviour, why a null in here before?
+        if (typeof error === 'string') {
             setShowAlert(true);
         }
     }, [error]);
@@ -72,7 +72,7 @@ const WordCount = () => {
                         <Alert
                             id="alert"
                             severity={'error'}
-                            message={error as string}
+                            message={error ? error as string : 'Remove alert'}
                             onClose={() => {
                                 setShowAlert(false);
                                 reduxDispatch(setWordCountStateProperty({ error: null }));

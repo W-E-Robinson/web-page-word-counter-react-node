@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import axios, { type AxiosError, type AxiosResponse } from 'axios';
 
 import BACKEND_PORT from '../../../../constants/endpoints';
 import { type WebPageInfo } from '../../actions/wordCount/actions';
