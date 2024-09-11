@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import { Button as MUIButton } from '@mui/material';
 
-import './styles.sass';
+import styles from './styles.module.sass';
 
 export interface ButtonProps {
     id: string;
@@ -20,7 +20,7 @@ const Button = memo(({
     onClick,
 }: ButtonProps) => (
     <MUIButton
-        className="button"
+        className={styles.button}
         id={id}
         disabled={disabled}
         onClick={onClick}
