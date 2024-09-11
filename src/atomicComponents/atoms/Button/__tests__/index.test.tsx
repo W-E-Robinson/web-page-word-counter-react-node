@@ -1,5 +1,4 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import Button from '../index';
 
@@ -34,7 +33,7 @@ describe('Button testing', () => {
             onClick={mockProps.onClick}
         />);
 
-        userEvent.click(screen.getByText('mock label'));
+        fireEvent.click(screen.getByText('mock label'));
         expect(mockOnClick).toHaveBeenCalledTimes(1);
     });
     it('should render the button disabled when prop is given', () => {
