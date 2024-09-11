@@ -6,7 +6,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-import './styles.sass';
+import styles from './styles.module.sass';
 
 export interface AccordionContent {
     accordionSummary: {
@@ -25,7 +25,7 @@ const Accordion = memo(({ accordionContent }: AccordionProps) => (
         {accordionContent.map((content) => (
             <MUIAccordion
                 key={content.accordionSummary.id}
-                className="accordion-organism"
+                className={styles['accordion-organism']}
                 TransitionProps={{ unmountOnExit: true }}
             >
                 <AccordionSummary

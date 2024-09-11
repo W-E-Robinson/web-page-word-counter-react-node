@@ -17,8 +17,6 @@ interface FormProps {
     fields: (ButtonComponentProps | TextFieldComponentProps)[];
 }
 
-// NOTE: what is this? = <div key={field.id} className={styles[`${index ? 'field' : ''}`]}>
-// NOTE: fix all styling
 const Form = ({
     id,
     fields,

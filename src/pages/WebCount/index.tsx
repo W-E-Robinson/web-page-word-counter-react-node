@@ -3,7 +3,7 @@ import {
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { type AccordionContent } from '../../atomicComponents/organisms/Accordion';
+import { AccordionContent } from '../../atomicComponents/organisms/Accordion';
 import { AppState } from '../../modules/Redux/reducers/rootReducer';
 import Form from '../../atomicComponents/molecules/Form';
 import formMapping from './mappings';

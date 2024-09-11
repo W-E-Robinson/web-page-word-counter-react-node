@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import { TextField as MUITextField } from '@mui/material';
 
-import './styles.sass';
+import styles from './styles.module.sass';
 
 export interface TextFieldProps {
     id: string;
@@ -27,7 +27,7 @@ const TextField = memo(({
 
     return (
         <MUITextField
-            className="text-field"
+            className={styles['text-field']}
             id={id}
             value={value}
             label={label}

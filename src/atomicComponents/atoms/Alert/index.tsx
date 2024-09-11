@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import { Alert as MUIAlert } from '@mui/material';
 
-import './styles.sass';
+import styles from './styles.module.sass';
 
 interface AlertProps {
     id: string;
@@ -18,7 +18,7 @@ const Alert = memo(({
     message,
 }: AlertProps) => (
     <MUIAlert
-        className="alert"
+        className={styles.alert}
         id={id}
         severity={severity}
         onClose={onClose}
