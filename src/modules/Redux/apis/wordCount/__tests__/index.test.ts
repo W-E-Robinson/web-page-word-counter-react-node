@@ -33,13 +33,18 @@ describe('api testing', () => {
     it('throws an error with message and status', async () => {
         const mockUrl = 'mockUrl';
         // @ts-ignore - ignoring full typing for a simple mock
-        axios.get.mockResolvedValueOnce(new Error('test message'));
+        axios.get.mockRejectedValueOnce(() => {
+            throw new Error('test message');
+        });
 
         try {
-            // NOTE: is the catch even triggered?
             await getWordCount(mockUrl);
         } catch (error) {
             expect(error).toBeInstanceOf(APIError);
+            if (error instanceof APIError) {
+                expect(error.message).toBe('Unknown error');
+                expect(error.status).toBe(500);
+            }
         }
     });
 });
