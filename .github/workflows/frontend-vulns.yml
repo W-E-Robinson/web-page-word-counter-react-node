@@ -19,7 +19,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.20.0
         with:
-          image-ref: 'web-page-word-counter-node:${{ github.sha }}'
+          image-ref: 'web-page-word-counter-react:${{ github.sha }}'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
