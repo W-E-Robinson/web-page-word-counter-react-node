@@ -7,6 +7,9 @@ on:
 jobs:
   lint-tests:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
     strategy:
       matrix:
         node-version: [18.x, 20.x, 22.x]
@@ -15,14 +18,9 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
+        cache-dependency-path: backend/package-lock.json
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-
-    - working-directory: ./backend
-      run: npm ci
-    
-    - working-directory: ./backend
-      run: npm run lint
-    
-    - working-directory: ./backend
-      run: npm test
+    - run: npm ci
+    - run: npm run lint
+    - run: npm test
