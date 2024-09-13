@@ -25,12 +25,3 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-  scan-repo:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Run Trivy vulnerability scanner in fs mode
-        run: |
-          cd ./backend
-          trivy fs . --format table --exit-code 1 --ignore-unfixed --vuln-type library --severity CRITICAL,HIGH
