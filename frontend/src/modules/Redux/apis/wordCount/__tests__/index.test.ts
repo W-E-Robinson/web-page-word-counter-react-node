@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import getWordCount, { APIError } from '../index';
-import BACKEND_PORT from '../../../../../constants/endpoints';
+import REACT_APP_BACKEND_URL from '../../../../../constants/endpoints';
 import { WebPageInfo } from '../../../actions/wordCount/actions';
 
 jest.mock('axios', () => ({
@@ -24,7 +24,7 @@ describe('api testing', () => {
         axios.get.mockResolvedValueOnce(mockResponse);
 
         const data = await getWordCount(mockUrl);
-        expect(axios.get).toHaveBeenCalledWith(`${BACKEND_PORT}/count?url=mockUrl`);
+        expect(axios.get).toHaveBeenCalledWith(`${REACT_APP_BACKEND_URL}/count?url=mockUrl`);
         expect(data).toEqual({
             url: 'mockUrl', wordCount: 1, wordsList: [{ word: 'test', count: 1 }],
         });

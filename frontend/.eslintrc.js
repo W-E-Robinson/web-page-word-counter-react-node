@@ -20,7 +20,7 @@ module.exports = {
         'import/extensions': [0, 'always'],
         'no-restricted-syntax': [0, { selector: 'ForOfStatement' }],
         'no-await-in-loop': [0],
-        'no-process-env': [2],
+        'no-process-env': [1],
         '@typescript-eslint/indent': [2, 4],
         '@typescript-eslint/default-param-last': [0],
     },
