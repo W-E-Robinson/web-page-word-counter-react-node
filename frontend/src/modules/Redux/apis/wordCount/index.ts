@@ -16,7 +16,7 @@ const getWordCount = async (
     url: string,
 ): Promise<WebPageInfo | { message: string, status: number }> => {
     try {
-        const response: AxiosResponse = await axios.get(`${process.env.REACT_APP_BACKEND_URL ?? REACT_APP_BACKEND_URL}/count?url=${url}`);
+        const response: AxiosResponse = await axios.get(`${REACT_APP_BACKEND_URL}/count?url=${url}`);
         return response.data;
     } catch (error) {
         throw new APIError(
