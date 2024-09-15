@@ -1,6 +1,6 @@
 import axios, { type AxiosError, type AxiosResponse } from 'axios';
 
-import BACKEND_PORT from '../../../../constants/endpoints';
+import REACT_APP_BACKEND_URL from '../../../../constants/endpoints';
 import { type WebPageInfo } from '../../actions/wordCount/actions';
 
 export class APIError extends Error {
@@ -16,7 +16,7 @@ const getWordCount = async (
     url: string,
 ): Promise<WebPageInfo | { message: string, status: number }> => {
     try {
-        const response: AxiosResponse = await axios.get(`${BACKEND_PORT}/count?url=${url}`);
+        const response: AxiosResponse = await axios.get(`${REACT_APP_BACKEND_URL}/count?url=${url}`);
         return response.data;
     } catch (error) {
         throw new APIError(

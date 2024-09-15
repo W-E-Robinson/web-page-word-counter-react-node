@@ -1,0 +1,14 @@
+version: "3.2"
+
+services:
+  web-page-word-counter-react:
+    image: web-page-word-counter-react
+    container_name: web-page-word-counter-react
+    ports:
+      - 3000:3000
+
+  web-page-word-counter-node:
+    image: web-page-word-counter-node
+    container_name: web-page-word-counter-node
+    ports:
+      - 8080:8080

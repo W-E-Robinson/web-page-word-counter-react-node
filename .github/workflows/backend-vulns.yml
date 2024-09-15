@@ -1,4 +1,4 @@
-name: Vulnerability Detection CI Pipeline
+name: Backend Vulnerability Detection CI Pipeline
 
 on:
   pull_request:
@@ -15,7 +15,8 @@ jobs:
       - name: Build an image from Dockerfile
         run: |
           docker build --pull --no-cache -t web-page-word-counter-node:${{ github.sha }} .
-      - name: Run Trivy vulnerability scanner
+        working-directory: ./backend
+      - name: Run Trivy vulnerability scanner on Docker image
         uses: aquasecurity/trivy-action@0.20.0
         with:
           image-ref: 'web-page-word-counter-node:${{ github.sha }}'
@@ -23,19 +24,4 @@ jobs:
           exit-code: '1'
           ignore-unfixed: true
           vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'
-  scan-repo:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Run Trivy vulnerability scanner in fs mode
-        uses: aquasecurity/trivy-action@0.20.0
-        with:
-          scan-type: 'fs'
-          scan-ref: '.'
-          format: 'table'
-          exit-code: '1'
-          ignore-unfixed: true
-          vuln-type: 'library'
           severity: 'CRITICAL,HIGH'

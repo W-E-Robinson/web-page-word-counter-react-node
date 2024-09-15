@@ -1,0 +1,27 @@
+name: Frontend Vulnerability Detection CI Pipeline
+
+on:
+  pull_request:
+    branches: [ '**' ]
+  schedule:
+    - cron: "0 12 * * 6"
+
+jobs:
+  scan-image:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build an image from Dockerfile
+        run: |
+          docker build --pull --no-cache -t web-page-word-counter-react:${{ github.sha }} .
+        working-directory: ./frontend
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.20.0
+        with:
+          image-ref: 'web-page-word-counter-react:${{ github.sha }}'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
