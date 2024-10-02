@@ -28,5 +28,5 @@ npm run dev
 docker build --pull --no-cache -t web-page-word-counter-node .
 ```
 ```bash
-docker run -p 8080:8080 --name web-page-word-counter-node web-page-word-counter-node
+docker run --rm -p 8080:8080 --name web-page-word-counter-node web-page-word-counter-node
 ```
