@@ -1,4 +1,4 @@
-# web-page-word-counter-frontend
+# web-page-word-counter-react
 
 ## Introduction
 This is a React application that allows the user to input a web page URL and receive both a count of the words on the page as well as a breakdown of word frequency.
@@ -12,7 +12,7 @@ npm install
 npm start
 ```
 
-### Docker container (container exposed on: http://localhost:8080)
+### Docker container (container exposed on: http://localhost:3000)
 ```bash
 docker build --pull --no-cache -t web-page-word-counter-react .
 ```
